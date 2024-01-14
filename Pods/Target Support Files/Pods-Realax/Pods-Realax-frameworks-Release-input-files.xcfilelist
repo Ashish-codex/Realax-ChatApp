@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-Realax/Pods-Realax-frameworks.sh
+${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework
+${BUILT_PRODUCTS_DIR}/LZViewPager/LZViewPager.framework
+${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework

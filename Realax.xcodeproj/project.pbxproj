@@ -7,23 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750E464F2B4046260029FE37 /* ChatCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 750E464E2B4046260029FE37 /* ChatCellView.xib */; };
+		750E46512B4046460029FE37 /* ChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E46502B4046460029FE37 /* ChatCellView.swift */; };
+		750E46532B40755C0029FE37 /* ExtUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750E46522B40755C0029FE37 /* ExtUIImageView.swift */; };
 		7512A0192B2DAF61008B9328 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512A0182B2DAF61008B9328 /* AppDelegate.swift */; };
 		7512A01B2B2DAF61008B9328 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */; };
-		7512A01D2B2DAF61008B9328 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512A01C2B2DAF61008B9328 /* ViewController.swift */; };
+		7512A01D2B2DAF61008B9328 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7512A01C2B2DAF61008B9328 /* MainViewController.swift */; };
 		7512A0202B2DAF62008B9328 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7512A01E2B2DAF62008B9328 /* Main.storyboard */; };
 		7512A0222B2DAF69008B9328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7512A0212B2DAF69008B9328 /* Assets.xcassets */; };
 		7512A0252B2DAF69008B9328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7512A0232B2DAF69008B9328 /* LaunchScreen.storyboard */; };
+		75270DC62B39B2CE005ECF38 /* ExtColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75270DC52B39B2CE005ECF38 /* ExtColor.swift */; };
+		753CE4F72B3AF7CF00D735F0 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */; };
+		753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */; };
+		7561AD8A2B413B9A0068C362 /* CallCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7561AD892B413B9A0068C362 /* CallCellView.xib */; };
+		7561AD8C2B413BA90068C362 /* CallCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8B2B413BA90068C362 /* CallCellView.swift */; };
+		7561AD8E2B4148D80068C362 /* CallListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8D2B4148D80068C362 /* CallListVC.swift */; };
+		7561AD902B414FB60068C362 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8F2B414FB60068C362 /* SettingVC.swift */; };
+		7561AD932B416A370068C362 /* AppHelpler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD922B416A370068C362 /* AppHelpler.swift */; };
+		75965B752B3BE5940096D238 /* ChatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75965B742B3BE5940096D238 /* ChatHomeVC.swift */; };
+		759BAA112B3F1F8600E40FF6 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */; };
+		75D003412B3944BD000C1708 /* SignUpBottomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003402B3944BD000C1708 /* SignUpBottomVC.swift */; };
+		75D003452B39593F000C1708 /* ExtTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003442B39593F000C1708 /* ExtTextField.swift */; };
+		75D003472B39594F000C1708 /* ExtButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003462B39594F000C1708 /* ExtButton.swift */; };
+		75D003492B39595C000C1708 /* ExtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003482B39595C000C1708 /* ExtView.swift */; };
+		75D0034C2B395E39000C1708 /* TextFieldPlainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0034A2B395E39000C1708 /* TextFieldPlainView.swift */; };
+		75D0034D2B395E39000C1708 /* TextFieldPlainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D0034B2B395E39000C1708 /* TextFieldPlainView.xib */; };
+		75D0035D2B397282000C1708 /* TextFieldWithIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D0035C2B397282000C1708 /* TextFieldWithIconView.xib */; };
+		75D0035F2B397299000C1708 /* TextFieldWithIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0035E2B397299000C1708 /* TextFieldWithIconView.swift */; };
+		75D003682B398BB4000C1708 /* LoginBottomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003672B398BB4000C1708 /* LoginBottomVC.swift */; };
+		75D0036A2B398BC4000C1708 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003692B398BC4000C1708 /* LoginViewController.swift */; };
+		75D0036C2B39906B000C1708 /* SelectGenderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D0036B2B39906B000C1708 /* SelectGenderVC.swift */; };
+		75D054CE2B4A642000D26963 /* ChatUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75D054CD2B4A642000D26963 /* ChatUI.storyboard */; };
+		75D054D22B4A68E000D26963 /* ChatUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D054D12B4A68E000D26963 /* ChatUIVC.swift */; };
+		75D054D42B4A887700D26963 /* ChatNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75D054D32B4A887700D26963 /* ChatNavBar.xib */; };
+		75D054D62B4A888900D26963 /* ChatNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D054D52B4A888900D26963 /* ChatNavBar.swift */; };
+		75FC71D52B52551200437233 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FC71D42B52551200437233 /* AppConstant.swift */; };
+		92D6B4F0A30AAF6C479427E3 /* Pods_Realax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 528FF6FB6754EFAB66F0ED29 /* Pods_Realax.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		086EE637B758C0B31E466BDF /* Pods-Realax.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Realax.release.xcconfig"; path = "Target Support Files/Pods-Realax/Pods-Realax.release.xcconfig"; sourceTree = "<group>"; };
+		26ED26237F36188EC76ACB79 /* Pods-Realax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Realax.debug.xcconfig"; path = "Target Support Files/Pods-Realax/Pods-Realax.debug.xcconfig"; sourceTree = "<group>"; };
+		528FF6FB6754EFAB66F0ED29 /* Pods_Realax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Realax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		750E464E2B4046260029FE37 /* ChatCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatCellView.xib; sourceTree = "<group>"; };
+		750E46502B4046460029FE37 /* ChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellView.swift; sourceTree = "<group>"; };
+		750E46522B40755C0029FE37 /* ExtUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtUIImageView.swift; sourceTree = "<group>"; };
 		7512A0152B2DAF61008B9328 /* Realax.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Realax.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7512A0182B2DAF61008B9328 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7512A01C2B2DAF61008B9328 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7512A01C2B2DAF61008B9328 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7512A01F2B2DAF62008B9328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7512A0212B2DAF69008B9328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7512A0242B2DAF69008B9328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7512A0262B2DAF69008B9328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75270DC52B39B2CE005ECF38 /* ExtColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtColor.swift; sourceTree = "<group>"; };
+		753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		7561AD892B413B9A0068C362 /* CallCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCellView.xib; sourceTree = "<group>"; };
+		7561AD8B2B413BA90068C362 /* CallCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCellView.swift; sourceTree = "<group>"; };
+		7561AD8D2B4148D80068C362 /* CallListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListVC.swift; sourceTree = "<group>"; };
+		7561AD8F2B414FB60068C362 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		7561AD922B416A370068C362 /* AppHelpler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelpler.swift; sourceTree = "<group>"; };
+		75965B742B3BE5940096D238 /* ChatHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeVC.swift; sourceTree = "<group>"; };
+		759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
+		75D003402B3944BD000C1708 /* SignUpBottomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBottomVC.swift; sourceTree = "<group>"; };
+		75D003442B39593F000C1708 /* ExtTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTextField.swift; sourceTree = "<group>"; };
+		75D003462B39594F000C1708 /* ExtButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtButton.swift; sourceTree = "<group>"; };
+		75D003482B39595C000C1708 /* ExtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtView.swift; sourceTree = "<group>"; };
+		75D0034A2B395E39000C1708 /* TextFieldPlainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldPlainView.swift; sourceTree = "<group>"; };
+		75D0034B2B395E39000C1708 /* TextFieldPlainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldPlainView.xib; sourceTree = "<group>"; };
+		75D0035C2B397282000C1708 /* TextFieldWithIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldWithIconView.xib; sourceTree = "<group>"; };
+		75D0035E2B397299000C1708 /* TextFieldWithIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIconView.swift; sourceTree = "<group>"; };
+		75D003672B398BB4000C1708 /* LoginBottomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBottomVC.swift; sourceTree = "<group>"; };
+		75D003692B398BC4000C1708 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		75D0036B2B39906B000C1708 /* SelectGenderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenderVC.swift; sourceTree = "<group>"; };
+		75D054CD2B4A642000D26963 /* ChatUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatUI.storyboard; sourceTree = "<group>"; };
+		75D054D12B4A68E000D26963 /* ChatUIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUIVC.swift; sourceTree = "<group>"; };
+		75D054D32B4A887700D26963 /* ChatNavBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatNavBar.xib; sourceTree = "<group>"; };
+		75D054D52B4A888900D26963 /* ChatNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatNavBar.swift; sourceTree = "<group>"; };
+		75FC71D42B52551200437233 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +93,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92D6B4F0A30AAF6C479427E3 /* Pods_Realax.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4BB157A230087A12D0506F11 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				528FF6FB6754EFAB66F0ED29 /* Pods_Realax.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		750E464D2B4046060029FE37 /* SingleCellView */ = {
+			isa = PBXGroup;
+			children = (
+				750E464E2B4046260029FE37 /* ChatCellView.xib */,
+				750E46502B4046460029FE37 /* ChatCellView.swift */,
+				7561AD892B413B9A0068C362 /* CallCellView.xib */,
+				7561AD8B2B413BA90068C362 /* CallCellView.swift */,
+				75D054D32B4A887700D26963 /* ChatNavBar.xib */,
+				75D054D52B4A888900D26963 /* ChatNavBar.swift */,
+			);
+			path = SingleCellView;
+			sourceTree = "<group>";
+		};
 		7512A00C2B2DAF61008B9328 = {
 			isa = PBXGroup;
 			children = (
 				7512A0172B2DAF61008B9328 /* Realax */,
 				7512A0162B2DAF61008B9328 /* Products */,
+				B2F30DC0F5D778B8BBE29505 /* Pods */,
+				4BB157A230087A12D0506F11 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +142,136 @@
 		7512A0172B2DAF61008B9328 /* Realax */ = {
 			isa = PBXGroup;
 			children = (
-				7512A0182B2DAF61008B9328 /* AppDelegate.swift */,
-				7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */,
-				7512A01C2B2DAF61008B9328 /* ViewController.swift */,
-				7512A01E2B2DAF62008B9328 /* Main.storyboard */,
+				75D003602B398AB5000C1708 /* App */,
+				75D054CC2B4A63D900D26963 /* ChatUI */,
+				753CE4F52B3AF7AC00D735F0 /* Dashboard */,
+				75D003612B398AC7000C1708 /* Onboarding */,
+				75D003432B395918000C1708 /* Extensions */,
+				75D003422B394F4B000C1708 /* Common UI */,
 				7512A0212B2DAF69008B9328 /* Assets.xcassets */,
 				7512A0232B2DAF69008B9328 /* LaunchScreen.storyboard */,
 				7512A0262B2DAF69008B9328 /* Info.plist */,
 			);
 			path = Realax;
+			sourceTree = "<group>";
+		};
+		753CE4F52B3AF7AC00D735F0 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */,
+				753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */,
+				75965B742B3BE5940096D238 /* ChatHomeVC.swift */,
+				759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */,
+				7561AD8D2B4148D80068C362 /* CallListVC.swift */,
+				7561AD8F2B414FB60068C362 /* SettingVC.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		75D003422B394F4B000C1708 /* Common UI */ = {
+			isa = PBXGroup;
+			children = (
+				750E464D2B4046060029FE37 /* SingleCellView */,
+				75D003572B3971F1000C1708 /* TextFieldWithIcon */,
+				75D003562B3971DC000C1708 /* PlainTextField */,
+			);
+			path = "Common UI";
+			sourceTree = "<group>";
+		};
+		75D003432B395918000C1708 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				75D003442B39593F000C1708 /* ExtTextField.swift */,
+				75D003462B39594F000C1708 /* ExtButton.swift */,
+				75D003482B39595C000C1708 /* ExtView.swift */,
+				75270DC52B39B2CE005ECF38 /* ExtColor.swift */,
+				750E46522B40755C0029FE37 /* ExtUIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		75D003562B3971DC000C1708 /* PlainTextField */ = {
+			isa = PBXGroup;
+			children = (
+				75D0034A2B395E39000C1708 /* TextFieldPlainView.swift */,
+				75D0034B2B395E39000C1708 /* TextFieldPlainView.xib */,
+			);
+			path = PlainTextField;
+			sourceTree = "<group>";
+		};
+		75D003572B3971F1000C1708 /* TextFieldWithIcon */ = {
+			isa = PBXGroup;
+			children = (
+				75D0035C2B397282000C1708 /* TextFieldWithIconView.xib */,
+				75D0035E2B397299000C1708 /* TextFieldWithIconView.swift */,
+			);
+			path = TextFieldWithIcon;
+			sourceTree = "<group>";
+		};
+		75D003602B398AB5000C1708 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7512A0182B2DAF61008B9328 /* AppDelegate.swift */,
+				7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */,
+				7561AD922B416A370068C362 /* AppHelpler.swift */,
+				75FC71D42B52551200437233 /* AppConstant.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		75D003612B398AC7000C1708 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				7512A01E2B2DAF62008B9328 /* Main.storyboard */,
+				75D003642B398B2E000C1708 /* Models */,
+				75D003632B398B1C000C1708 /* ViewModels */,
+				75D003622B398B05000C1708 /* ViewControllers */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		75D003622B398B05000C1708 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				75D003402B3944BD000C1708 /* SignUpBottomVC.swift */,
+				7512A01C2B2DAF61008B9328 /* MainViewController.swift */,
+				75D003672B398BB4000C1708 /* LoginBottomVC.swift */,
+				75D003692B398BC4000C1708 /* LoginViewController.swift */,
+				75D0036B2B39906B000C1708 /* SelectGenderVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		75D003632B398B1C000C1708 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		75D003642B398B2E000C1708 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75D054CC2B4A63D900D26963 /* ChatUI */ = {
+			isa = PBXGroup;
+			children = (
+				75D054CD2B4A642000D26963 /* ChatUI.storyboard */,
+				75D054D12B4A68E000D26963 /* ChatUIVC.swift */,
+			);
+			path = ChatUI;
+			sourceTree = "<group>";
+		};
+		B2F30DC0F5D778B8BBE29505 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				26ED26237F36188EC76ACB79 /* Pods-Realax.debug.xcconfig */,
+				086EE637B758C0B31E466BDF /* Pods-Realax.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +281,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7512A0292B2DAF69008B9328 /* Build configuration list for PBXNativeTarget "Realax" */;
 			buildPhases = (
+				8533885E6A3FC5037B32C594 /* [CP] Check Pods Manifest.lock */,
 				7512A0112B2DAF61008B9328 /* Sources */,
 				7512A0122B2DAF61008B9328 /* Frameworks */,
 				7512A0132B2DAF61008B9328 /* Resources */,
+				6AEBB995E1590E4F8403FA4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,22 +334,93 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7561AD8A2B413B9A0068C362 /* CallCellView.xib in Resources */,
 				7512A0252B2DAF69008B9328 /* LaunchScreen.storyboard in Resources */,
+				753CE4F72B3AF7CF00D735F0 /* Dashboard.storyboard in Resources */,
+				75D054CE2B4A642000D26963 /* ChatUI.storyboard in Resources */,
+				750E464F2B4046260029FE37 /* ChatCellView.xib in Resources */,
 				7512A0222B2DAF69008B9328 /* Assets.xcassets in Resources */,
 				7512A0202B2DAF62008B9328 /* Main.storyboard in Resources */,
+				75D0035D2B397282000C1708 /* TextFieldWithIconView.xib in Resources */,
+				75D0034D2B395E39000C1708 /* TextFieldPlainView.xib in Resources */,
+				75D054D42B4A887700D26963 /* ChatNavBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6AEBB995E1590E4F8403FA4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Realax/Pods-Realax-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Realax/Pods-Realax-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Realax/Pods-Realax-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8533885E6A3FC5037B32C594 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Realax-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7512A0112B2DAF61008B9328 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7512A01D2B2DAF61008B9328 /* ViewController.swift in Sources */,
+				75D054D22B4A68E000D26963 /* ChatUIVC.swift in Sources */,
+				75D003412B3944BD000C1708 /* SignUpBottomVC.swift in Sources */,
+				7561AD902B414FB60068C362 /* SettingVC.swift in Sources */,
+				75D003452B39593F000C1708 /* ExtTextField.swift in Sources */,
+				7512A01D2B2DAF61008B9328 /* MainViewController.swift in Sources */,
 				7512A0192B2DAF61008B9328 /* AppDelegate.swift in Sources */,
+				75D054D62B4A888900D26963 /* ChatNavBar.swift in Sources */,
+				7561AD8C2B413BA90068C362 /* CallCellView.swift in Sources */,
 				7512A01B2B2DAF61008B9328 /* SceneDelegate.swift in Sources */,
+				750E46532B40755C0029FE37 /* ExtUIImageView.swift in Sources */,
+				75D003472B39594F000C1708 /* ExtButton.swift in Sources */,
+				7561AD8E2B4148D80068C362 /* CallListVC.swift in Sources */,
+				75965B752B3BE5940096D238 /* ChatHomeVC.swift in Sources */,
+				75D003492B39595C000C1708 /* ExtView.swift in Sources */,
+				759BAA112B3F1F8600E40FF6 /* ChatListVC.swift in Sources */,
+				75D0035F2B397299000C1708 /* TextFieldWithIconView.swift in Sources */,
+				75FC71D52B52551200437233 /* AppConstant.swift in Sources */,
+				750E46512B4046460029FE37 /* ChatCellView.swift in Sources */,
+				75D0036C2B39906B000C1708 /* SelectGenderVC.swift in Sources */,
+				7561AD932B416A370068C362 /* AppHelpler.swift in Sources */,
+				753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */,
+				75270DC62B39B2CE005ECF38 /* ExtColor.swift in Sources */,
+				75D0034C2B395E39000C1708 /* TextFieldPlainView.swift in Sources */,
+				75D003682B398BB4000C1708 /* LoginBottomVC.swift in Sources */,
+				75D0036A2B398BC4000C1708 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +562,7 @@
 		};
 		7512A02A2B2DAF69008B9328 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26ED26237F36188EC76ACB79 /* Pods-Realax.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -293,8 +574,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +593,7 @@
 		};
 		7512A02B2B2DAF69008B9328 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 086EE637B758C0B31E466BDF /* Pods-Realax.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,8 +605,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
