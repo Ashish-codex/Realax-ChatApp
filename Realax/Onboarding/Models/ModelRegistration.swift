@@ -24,7 +24,7 @@ struct ModelRegistrationRES: Codable {
 
 // MARK: - DataClass
 struct RegistrationDataClass: Codable {
-    let user: User
+    let user: RegistrationUser
 }
 
 // MARK: - User

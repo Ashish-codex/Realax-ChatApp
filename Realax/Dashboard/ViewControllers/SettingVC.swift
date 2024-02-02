@@ -72,7 +72,7 @@ class SettingVC: UIViewController {
         
         let alertVC = UIAlertController(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
-            
+            self.apiLogout()
         }))
         
         alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -101,6 +101,7 @@ extension SettingVC {
         
         dashboardViewModel.apiLogout(reqUrl: .logOut, reqBody: logoutReq, reqHttpMethod: .POST) { response in
             
+            AppHelper.hideProgessHUD(vc: self)
             switch response{
             case .success(let logoutRes) :
                 DispatchQueue.main.async {
