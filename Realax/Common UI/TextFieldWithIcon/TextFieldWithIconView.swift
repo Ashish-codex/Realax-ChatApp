@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 
+protocol TextFieldWithIconViewDelegate{
+    func onClickTextFieldIcon()
+}
+
 class TextFieldWithIconView: UIView {
     
     
@@ -16,6 +20,7 @@ class TextFieldWithIconView: UIView {
     @IBOutlet private weak var txtField: UITextField!
     @IBOutlet private weak var imgFieldIcon: UIImageView!
     
+    var delegate:TextFieldWithIconViewDelegate?
     
     var nibView: UIView? = nil
     
@@ -52,10 +57,14 @@ class TextFieldWithIconView: UIView {
     
     
     @IBAction func actBtnFieldIcon(_ sender: Any) {
+        delegate?.onClickTextFieldIcon()
     }
     
     
     
+    public func isSecureTextField(isSecure: Bool){
+        txtField.isSecureTextEntry = isSecure
+    }
     
     public func setPlaceHolder(placeholder: String){
         txtField.placeholder = placeholder
@@ -63,6 +72,23 @@ class TextFieldWithIconView: UIView {
     
     public func setImageFieldIcon(icon: UIImage){
         imgFieldIcon.image = icon
+    }
+    
+    public func getImageFieldIcon()-> UIImage {
+        return imgFieldIcon.image ?? UIImage()
+    }
+    
+    public func setKeyboardType(type: UIKeyboardType){
+        txtField.returnKeyType = .done
+        txtField.keyboardType = type
+    }
+    
+    public func getText() -> String{
+        return txtField.text ?? ""
+    }
+    
+    public func setText(text:String){
+        txtField.text = text
     }
     
 }

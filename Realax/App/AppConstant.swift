@@ -9,5 +9,6 @@ import Foundation
 
 class AppConstant {
     
-    
+    static let kAPP_NAME = "Realax"
+    static let kMSG_LOADING = "Request in process"
 }

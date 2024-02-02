@@ -28,13 +28,13 @@ class DashboardVC: UIViewController {
     @IBAction func actBtnGetStarted(_ sender: Any) {
         
         guard let vc = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatHomeVC") as? ChatHomeVC else {
-            print("Unable to load ChatHomeVC")
+            AppHelper.printf(statement:"Unable to load ChatHomeVC")
             return
         }
         
         navigationController?.pushViewController(vc, animated: true)
         
-        print("pressd..")
+        AppHelper.printf(statement:"pressd..")
     }
     
     

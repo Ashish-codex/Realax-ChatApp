@@ -17,8 +17,13 @@
 		7512A0222B2DAF69008B9328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7512A0212B2DAF69008B9328 /* Assets.xcassets */; };
 		7512A0252B2DAF69008B9328 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7512A0232B2DAF69008B9328 /* LaunchScreen.storyboard */; };
 		75270DC62B39B2CE005ECF38 /* ExtColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75270DC52B39B2CE005ECF38 /* ExtColor.swift */; };
+		752C916C2B68B4A40084A18F /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752C916B2B68B4A40084A18F /* DashboardViewModel.swift */; };
+		752C916E2B68B6AF0084A18F /* ModelLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752C916D2B68B6AF0084A18F /* ModelLogout.swift */; };
+		753C46D42B668754001C53F8 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C46D32B668754001C53F8 /* OnboardingViewModel.swift */; };
+		753C46D62B669335001C53F8 /* ModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C46D52B669334001C53F8 /* ModelLogin.swift */; };
 		753CE4F72B3AF7CF00D735F0 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */; };
 		753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */; };
+		754CAD772B6BA11200A0306C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CAD762B6BA11200A0306C /* UserInfo.swift */; };
 		7561AD8A2B413B9A0068C362 /* CallCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7561AD892B413B9A0068C362 /* CallCellView.xib */; };
 		7561AD8C2B413BA90068C362 /* CallCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8B2B413BA90068C362 /* CallCellView.swift */; };
 		7561AD8E2B4148D80068C362 /* CallListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8D2B4148D80068C362 /* CallListVC.swift */; };
@@ -26,6 +31,13 @@
 		7561AD932B416A370068C362 /* AppHelpler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD922B416A370068C362 /* AppHelpler.swift */; };
 		75965B752B3BE5940096D238 /* ChatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75965B742B3BE5940096D238 /* ChatHomeVC.swift */; };
 		759BAA112B3F1F8600E40FF6 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */; };
+		75A815EB2B6A272200AC534E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A815EA2B6A272200AC534E /* SplashViewController.swift */; };
+		75BA627E2B592B7800DBEF71 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA627D2B592B7800DBEF71 /* ApiService.swift */; };
+		75BA62802B5933D600DBEF71 /* ApiRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA627F2B5933D600DBEF71 /* ApiRoute.swift */; };
+		75BA62822B5959DF00DBEF71 /* ModelRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA62812B5959DF00DBEF71 /* ModelRegistration.swift */; };
+		75BA62842B59651C00DBEF71 /* ApiHttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA62832B59651C00DBEF71 /* ApiHttpMethod.swift */; };
+		75BA62862B5A4C4900DBEF71 /* ExtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA62852B5A4C4900DBEF71 /* ExtData.swift */; };
+		75BA62882B5A4C5700DBEF71 /* ExtDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BA62872B5A4C5700DBEF71 /* ExtDictionary.swift */; };
 		75D003412B3944BD000C1708 /* SignUpBottomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003402B3944BD000C1708 /* SignUpBottomVC.swift */; };
 		75D003452B39593F000C1708 /* ExtTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003442B39593F000C1708 /* ExtTextField.swift */; };
 		75D003472B39594F000C1708 /* ExtButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D003462B39594F000C1708 /* ExtButton.swift */; };
@@ -61,8 +73,13 @@
 		7512A0242B2DAF69008B9328 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7512A0262B2DAF69008B9328 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75270DC52B39B2CE005ECF38 /* ExtColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtColor.swift; sourceTree = "<group>"; };
+		752C916B2B68B4A40084A18F /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		752C916D2B68B6AF0084A18F /* ModelLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLogout.swift; sourceTree = "<group>"; };
+		753C46D32B668754001C53F8 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		753C46D52B669334001C53F8 /* ModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLogin.swift; sourceTree = "<group>"; };
 		753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		754CAD762B6BA11200A0306C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7561AD892B413B9A0068C362 /* CallCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCellView.xib; sourceTree = "<group>"; };
 		7561AD8B2B413BA90068C362 /* CallCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCellView.swift; sourceTree = "<group>"; };
 		7561AD8D2B4148D80068C362 /* CallListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallListVC.swift; sourceTree = "<group>"; };
@@ -70,6 +87,13 @@
 		7561AD922B416A370068C362 /* AppHelpler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelpler.swift; sourceTree = "<group>"; };
 		75965B742B3BE5940096D238 /* ChatHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeVC.swift; sourceTree = "<group>"; };
 		759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
+		75A815EA2B6A272200AC534E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		75BA627D2B592B7800DBEF71 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		75BA627F2B5933D600DBEF71 /* ApiRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRoute.swift; sourceTree = "<group>"; };
+		75BA62812B5959DF00DBEF71 /* ModelRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRegistration.swift; sourceTree = "<group>"; };
+		75BA62832B59651C00DBEF71 /* ApiHttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHttpMethod.swift; sourceTree = "<group>"; };
+		75BA62852B5A4C4900DBEF71 /* ExtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtData.swift; sourceTree = "<group>"; };
+		75BA62872B5A4C5700DBEF71 /* ExtDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtDictionary.swift; sourceTree = "<group>"; };
 		75D003402B3944BD000C1708 /* SignUpBottomVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpBottomVC.swift; sourceTree = "<group>"; };
 		75D003442B39593F000C1708 /* ExtTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtTextField.swift; sourceTree = "<group>"; };
 		75D003462B39594F000C1708 /* ExtButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtButton.swift; sourceTree = "<group>"; };
@@ -142,6 +166,7 @@
 		7512A0172B2DAF61008B9328 /* Realax */ = {
 			isa = PBXGroup;
 			children = (
+				75BA627C2B592AC100DBEF71 /* API Service */,
 				75D003602B398AB5000C1708 /* App */,
 				75D054CC2B4A63D900D26963 /* ChatUI */,
 				753CE4F52B3AF7AC00D735F0 /* Dashboard */,
@@ -159,13 +184,49 @@
 			isa = PBXGroup;
 			children = (
 				753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */,
+				75BA627B2B592A7600DBEF71 /* Models */,
+				75BA627A2B592A6500DBEF71 /* ViewModels */,
+				75BA62792B592A3C00DBEF71 /* ViewControllers */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		75BA62792B592A3C00DBEF71 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
 				753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */,
 				75965B742B3BE5940096D238 /* ChatHomeVC.swift */,
 				759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */,
 				7561AD8D2B4148D80068C362 /* CallListVC.swift */,
 				7561AD8F2B414FB60068C362 /* SettingVC.swift */,
 			);
-			path = Dashboard;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		75BA627A2B592A6500DBEF71 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				752C916B2B68B4A40084A18F /* DashboardViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		75BA627B2B592A7600DBEF71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				752C916D2B68B6AF0084A18F /* ModelLogout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		75BA627C2B592AC100DBEF71 /* API Service */ = {
+			isa = PBXGroup;
+			children = (
+				75BA627D2B592B7800DBEF71 /* ApiService.swift */,
+				75BA627F2B5933D600DBEF71 /* ApiRoute.swift */,
+				75BA62832B59651C00DBEF71 /* ApiHttpMethod.swift */,
+			);
+			path = "API Service";
 			sourceTree = "<group>";
 		};
 		75D003422B394F4B000C1708 /* Common UI */ = {
@@ -186,6 +247,8 @@
 				75D003482B39595C000C1708 /* ExtView.swift */,
 				75270DC52B39B2CE005ECF38 /* ExtColor.swift */,
 				750E46522B40755C0029FE37 /* ExtUIImageView.swift */,
+				75BA62852B5A4C4900DBEF71 /* ExtData.swift */,
+				75BA62872B5A4C5700DBEF71 /* ExtDictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +278,7 @@
 				7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */,
 				7561AD922B416A370068C362 /* AppHelpler.swift */,
 				75FC71D42B52551200437233 /* AppConstant.swift */,
+				754CAD762B6BA11200A0306C /* UserInfo.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -238,6 +302,7 @@
 				75D003672B398BB4000C1708 /* LoginBottomVC.swift */,
 				75D003692B398BC4000C1708 /* LoginViewController.swift */,
 				75D0036B2B39906B000C1708 /* SelectGenderVC.swift */,
+				75A815EA2B6A272200AC534E /* SplashViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -245,6 +310,7 @@
 		75D003632B398B1C000C1708 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				753C46D32B668754001C53F8 /* OnboardingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -252,6 +318,8 @@
 		75D003642B398B2E000C1708 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				75BA62812B5959DF00DBEF71 /* ModelRegistration.swift */,
+				753C46D52B669334001C53F8 /* ModelLogin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -396,6 +464,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75BA627E2B592B7800DBEF71 /* ApiService.swift in Sources */,
+				75BA62882B5A4C5700DBEF71 /* ExtDictionary.swift in Sources */,
+				75BA62802B5933D600DBEF71 /* ApiRoute.swift in Sources */,
+				75A815EB2B6A272200AC534E /* SplashViewController.swift in Sources */,
+				753C46D42B668754001C53F8 /* OnboardingViewModel.swift in Sources */,
 				75D054D22B4A68E000D26963 /* ChatUIVC.swift in Sources */,
 				75D003412B3944BD000C1708 /* SignUpBottomVC.swift in Sources */,
 				7561AD902B414FB60068C362 /* SettingVC.swift in Sources */,
@@ -403,22 +476,29 @@
 				7512A01D2B2DAF61008B9328 /* MainViewController.swift in Sources */,
 				7512A0192B2DAF61008B9328 /* AppDelegate.swift in Sources */,
 				75D054D62B4A888900D26963 /* ChatNavBar.swift in Sources */,
+				75BA62862B5A4C4900DBEF71 /* ExtData.swift in Sources */,
 				7561AD8C2B413BA90068C362 /* CallCellView.swift in Sources */,
 				7512A01B2B2DAF61008B9328 /* SceneDelegate.swift in Sources */,
 				750E46532B40755C0029FE37 /* ExtUIImageView.swift in Sources */,
 				75D003472B39594F000C1708 /* ExtButton.swift in Sources */,
 				7561AD8E2B4148D80068C362 /* CallListVC.swift in Sources */,
+				75BA62822B5959DF00DBEF71 /* ModelRegistration.swift in Sources */,
 				75965B752B3BE5940096D238 /* ChatHomeVC.swift in Sources */,
 				75D003492B39595C000C1708 /* ExtView.swift in Sources */,
 				759BAA112B3F1F8600E40FF6 /* ChatListVC.swift in Sources */,
 				75D0035F2B397299000C1708 /* TextFieldWithIconView.swift in Sources */,
 				75FC71D52B52551200437233 /* AppConstant.swift in Sources */,
+				75BA62842B59651C00DBEF71 /* ApiHttpMethod.swift in Sources */,
+				752C916E2B68B6AF0084A18F /* ModelLogout.swift in Sources */,
 				750E46512B4046460029FE37 /* ChatCellView.swift in Sources */,
+				752C916C2B68B4A40084A18F /* DashboardViewModel.swift in Sources */,
 				75D0036C2B39906B000C1708 /* SelectGenderVC.swift in Sources */,
 				7561AD932B416A370068C362 /* AppHelpler.swift in Sources */,
 				753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */,
+				754CAD772B6BA11200A0306C /* UserInfo.swift in Sources */,
 				75270DC62B39B2CE005ECF38 /* ExtColor.swift in Sources */,
 				75D0034C2B395E39000C1708 /* TextFieldPlainView.swift in Sources */,
+				753C46D62B669335001C53F8 /* ModelLogin.swift in Sources */,
 				75D003682B398BB4000C1708 /* LoginBottomVC.swift in Sources */,
 				75D0036A2B398BC4000C1708 /* LoginViewController.swift in Sources */,
 			);

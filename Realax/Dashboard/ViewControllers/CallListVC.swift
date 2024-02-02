@@ -63,7 +63,7 @@ extension CallListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ID_CallListTableViewCell", for: indexPath) as? CallListTableViewCell else {
-            print("Unable to load CallListTableViewCell")
+            AppHelper.printf(statement:"Unable to load CallListTableViewCell")
             return UITableViewCell()
         }
         

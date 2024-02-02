@@ -40,7 +40,7 @@ class SelectGenderVC: UIViewController {
     @IBAction func actBtnContinue(_ sender: Any) {
         
         guard let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ID_MainViewController") as? MainViewController else{
-            print("Unable to found Login ViewController")
+            AppHelper.printf(statement:"Unable to found Login ViewController")
             return
         }
         

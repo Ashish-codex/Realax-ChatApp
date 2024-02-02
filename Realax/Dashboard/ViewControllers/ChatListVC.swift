@@ -62,7 +62,7 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ID_ChatListTableViewCell", for: indexPath) as? ChatListTableViewCell else {
-            print("Unable to load cell")
+            AppHelper.printf(statement:"Unable to load cell")
             return UITableViewCell()
         }
         
@@ -76,11 +76,11 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("Slect at : \(indexPath.row)")
-        print("\(navigationController?.navigationBar.frame)")
+        AppHelper.printf(statement:"Slect at : \(indexPath.row)")
+        AppHelper.printf(statement:"\(navigationController?.navigationBar.frame)")
         
         guard let chatUiVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatUIVC") as? ChatUIVC else {
-            print("Unable to load SettingVC")
+            AppHelper.printf(statement:"Unable to load SettingVC")
             return
         }
         navigationController?.pushViewController(chatUiVC, animated: true)

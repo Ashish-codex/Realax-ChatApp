@@ -10,8 +10,8 @@ import UIKit
 class TextFieldPlainView: UIView {
 
     
-    @IBOutlet weak var containerVeiw: UIView!
-    @IBOutlet weak var txtField: UITextField!
+    @IBOutlet weak private var containerVeiw: UIView!
+    @IBOutlet weak private var txtField: UITextField!
     
     var nibView: UIView? = nil
     
@@ -50,5 +50,17 @@ class TextFieldPlainView: UIView {
     public func setPlaceHolder(placeholder: String){
         txtField.placeholder = placeholder
     }
+    
+    public func setKeyboardType(type: UIKeyboardType){
+        txtField.returnKeyType = .done
+        txtField.keyboardType = type
+    }
+    
+    public func getText() -> String{
+        return txtField.text ?? ""
+    }
 
+    public func setText(text:String){
+        txtField.text = text
+    }
 }

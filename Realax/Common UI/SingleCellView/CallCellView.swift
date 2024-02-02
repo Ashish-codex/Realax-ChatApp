@@ -44,12 +44,12 @@ class CallCellView: UIView{
 
     
     @IBAction func actBtnVideoCall(_ sender: Any) {
-        print("Index \(atIndex) is video calling ...")
+        AppHelper.printf(statement:"Index \(atIndex) is video calling ...")
     }
     
     
     @IBAction func actBtnNormalCall(_ sender: Any) {
-        print("Index \(atIndex) is calling ...")
+        AppHelper.printf(statement:"Index \(atIndex) is calling ...")
     }
     
     

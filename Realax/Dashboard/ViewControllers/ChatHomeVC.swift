@@ -32,13 +32,13 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
         viewPager.hostController = self
         
         guard let tempVC1 = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatListVC") as? ChatListVC else {
-            print("Unable to load ChatListVC")
+            AppHelper.printf(statement:"Unable to load ChatListVC")
             return
         }
         
         
         guard let tempVC2 = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_CallListVC") as? CallListVC else {
-            print("Unable to load CallListVC")
+            AppHelper.printf(statement:"Unable to load CallListVC")
             return
         }
         
@@ -79,7 +79,7 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
     @IBAction func actBtnSetting(_ sender: Any) {
         
         guard let settingVC = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_SettingVC") as? SettingVC else {
-            print("Unable to load SettingVC")
+            AppHelper.printf(statement:"Unable to load SettingVC")
             return
         }
         

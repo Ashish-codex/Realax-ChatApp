@@ -17,6 +17,8 @@ class SettingVC: UIViewController {
     @IBOutlet weak var viewContainerProfile: UIView!
     @IBOutlet weak var viewHeader: UIView!
     
+    private var dashboardViewModel = DashboardViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,7 +48,7 @@ class SettingVC: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("Setting Disappear")
+        AppHelper.printf(statement:"Setting Disappear")
         AppHelper.removeStatusBarColor()
 
     }
@@ -67,6 +69,15 @@ class SettingVC: UIViewController {
     
    
     @IBAction func actBtnLogout(_ sender: Any) {
+        
+        let alertVC = UIAlertController(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            
+        }))
+        
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(alertVC, animated: true)
     }
     
     
@@ -74,4 +85,47 @@ class SettingVC: UIViewController {
     }
     
     
+}
+
+
+
+
+
+// MARK: - Api Service
+extension SettingVC {
+    
+    func apiLogout(){
+        
+        AppHelper.showProgressHUD(vc: self)
+        let logoutReq = ModelLogoutREQ()
+        
+        dashboardViewModel.apiLogout(reqUrl: .logOut, reqBody: logoutReq, reqHttpMethod: .POST) { response in
+            
+            switch response{
+            case .success(let logoutRes) :
+                DispatchQueue.main.async {
+                    
+                    guard let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ID_MainViewController") as? MainViewController else{
+                        AppHelper.printf(statement: "Unable to load ID_MainViewController after logout")
+                        return
+                    }
+                    
+                    self.navigationController?.pushViewController(loginVC, animated: true)
+                }
+                break
+                
+                
+            case.failure(.message(let msg)) :
+                AppHelper.getErrorAlert(msg: msg, vc: self) { actionTitle in}
+                break
+                
+                
+            case.failure(.error(let err)) :
+                AppHelper.getErrorAlert(msg: err.localizedDescription, vc: self) { actionTitle in}
+                break
+                
+            }
+        }
+        
+    }
 }

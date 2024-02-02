@@ -12,12 +12,10 @@ class LoginBottomVC: UIViewController {
     
     
     @IBOutlet weak var btnGetLogin: UIButton!
-    
-    
     @IBOutlet weak var viewEmail: TextFieldPlainView!
-    
     @IBOutlet weak var viewPassword: TextFieldWithIconView!
     
+    let onboardingVM = OnboardingViewModel()
     
     
     override func viewDidLoad() {
@@ -27,16 +25,16 @@ class LoginBottomVC: UIViewController {
     }
     
     @IBAction func actBtnGetLogin(_ sender: Any) {
-        
-        guard let vc = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatHomeVC") as? ChatHomeVC else {
-            print("Unable to load DashboardVC")
+
+        view.endEditing(true)
+        guard !viewEmail.getText().elementsEqual("") || !viewPassword.getText().elementsEqual("") else{
+            
+            AppHelper.getErrorAlert(msg: "Please enter valid email and password", vc: self) { actionTitle in
+            }
             return
         }
         
-        let navController = UINavigationController(rootViewController: vc)
-        navController.modalPresentationStyle = .fullScreen
-        self.present(navController, animated: true)
-//        navigationController?.pushViewController(navController, animated: true)
+        apiLogin()
         
         
     }
@@ -46,4 +44,46 @@ class LoginBottomVC: UIViewController {
     
     
 
+}
+
+
+
+extension LoginBottomVC{
+    
+    func apiLogin(){
+        AppHelper.showProgressHUD(vc: self)
+        let reqData = ModelLoginREQ(email: viewEmail.getText(), password: viewPassword.getText())
+        
+        onboardingVM.apiLogin(reqUrl: .login, reqBody: reqData, reqHttpMethod: .POST) { response in
+            
+            AppHelper.hideProgessHUD(vc: self)
+            switch response{
+            case .success(let resDict) :
+                
+                UserInfo.isLoggedIn = true
+                DispatchQueue.main.async {
+                    guard let vc = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatHomeVC") as? ChatHomeVC else {
+                        AppHelper.printf(statement:"Unable to load DashboardVC")
+                        return
+                    }
+                    
+                    let navController = UINavigationController(rootViewController: vc)
+                    navController.modalPresentationStyle = .fullScreen
+                    self.present(navController, animated: true)
+                    
+                }
+                
+                break
+                
+            case.failure(.message(let msg)) :
+                AppHelper.getErrorAlert(msg: msg, vc: self) { actionTitle in}
+                break
+                
+                
+            case.failure(.error(let err)) :
+                AppHelper.getErrorAlert(msg: err.localizedDescription, vc: self) { actionTitle in}
+                break
+            }
+        }
+    }
 }
