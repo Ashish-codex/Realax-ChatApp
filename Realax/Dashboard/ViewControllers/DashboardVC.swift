@@ -12,6 +12,8 @@ class DashboardVC: UIViewController {
     
     @IBOutlet weak var viewProfileImg: UIView!
     @IBOutlet weak var btnGetStarted: UIButton!
+    @IBOutlet weak var imgProfile: UIImageView!
+    @IBOutlet weak var lblUserName: UILabel!
     
     
     
@@ -19,6 +21,7 @@ class DashboardVC: UIViewController {
         super.viewDidLoad()
         
 //        navigationController?.setNavigationBarHidden(true, animated: true)
+        lblUserName.text = "Hello, \(UserInfo.userName)"
         btnGetStarted.customRoundedButton(radius: 10)
         viewProfileImg.customRoundedView(radius: viewProfileImg.frame.height / 2)
     }

@@ -9,6 +9,8 @@ import Foundation
 
 enum ApiRoute: String {
     
+    case baseUrl = "https://chatsapp-nw05.onrender.com/"
+    
     //Auth Api
     case refreshToken = "api/v1/users/refresh-token"
     case logOut = "api/v1/users/logout"

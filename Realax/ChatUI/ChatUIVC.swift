@@ -7,7 +7,8 @@
 
 import UIKit
 import MessageKit
-
+import InputBarAccessoryView
+import SocketIO
 
 struct Sender:SenderType{
     var senderId: String
@@ -23,8 +24,9 @@ struct Message:MessageType{
 }
 
 
-
+// MARK: - ChatUIVC
 class ChatUIVC: MessagesViewController{
+    
 
     let currentUser = Sender(senderId: "self", displayName: "Ashsih P")
     let otherUser = Sender(senderId: "other", displayName: "Deepak J")
@@ -32,15 +34,102 @@ class ChatUIVC: MessagesViewController{
     var chatNavBarView:ChatNavBar = ChatNavBar()
     var atIndex:Int = 0
     var msgContentCell = MessageContentCell()
+    var reciverInfo: Participant!
+    var chatHeaderData:ChatCellViewData!
     
+//    private var manager: SocketManager!
+//    var socketClient: SocketIOClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         setupUI()
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
+        messageInputBar.becomeFirstResponder()
+        
+        
+        
+        
+        
+//        guard let baseURL = URL(string: ApiRoute.baseUrl.rawValue) else{
+//            AppHelper.printf(statement: "Unable to load BaseURL from SocketHelper")
+//            return
+//        }
+//
+//        manager = SocketManager(socketURL: baseURL, config: [
+//            .log(true),
+//            .compress,
+//            .secure(true),
+//            .connectParams([
+//                "token": UserInfo.accessToken ?? ""
+//            ])
+//        ])
+//
+//        socketClient = manager.defaultSocket
+//
+//
+//        socketClient.connect()
+//
+//
+//        socketClient.on(clientEvent: .connect) { data, ack in
+//            AppHelper.printf(statement: "Socket Connect...........................1 ")
+//        }
+//
+//        socketClient.on(AppHelper.SocketEvents.connected.rawValue) { data, ack in
+//            AppHelper.printf(statement: "Socket Connect........................... 2")
+//        }
+//
+//
+//
+//        socketClient.on(AppHelper.SocketEvents.disconnect.rawValue) { data, ack in
+//
+//        }
+        
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputBar.inputTextView.becomeFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        AppHelper.removeStatusBarColor()
+        chatNavBarView.removeFromSuperview()
+//        socketClient.disconnect()
+    }
+    
+    
+    
+    func setupUI(){
+        setNavigationBarUI()
+        setMessageKitUI()
 
+        
+//        SocketHelper.shared.socketOn(event: .typing) { data in
+//            DispatchQueue.main.async {
+//                self.chatHeaderData.isTyping = true
+//                self.chatNavBarView.setData(cellData: self.chatHeaderData)
+//            }
+//        }
+//
+//        SocketHelper.shared.socketOn(event: .stopTyping) { data in
+//            DispatchQueue.main.async {
+//                self.chatHeaderData.isTyping = false
+//                self.chatNavBarView.setData(cellData: self.chatHeaderData)
+//            }
+//        }
+        
+    }
+    
+    
+    func addDummyMessages(){
         
         messages.append(Message(sender: currentUser,
                                 messageId: "1",
@@ -102,22 +191,7 @@ class ChatUIVC: MessagesViewController{
                                 sentDate: Date().addingTimeInterval(-16400),
                                 kind: .text("Nikal Laude ..")))
             
-        
     }
-    
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        AppHelper.removeStatusBarColor()
-        chatNavBarView.removeFromSuperview()
-    }
-    
-    
-    
-    func setupUI(){
-        setNavigationBarUI()
-        setMessageKitUI()
-    }
-    
     
     func setNavigationBarUI(){
         let navigationBound = navigationController!.navigationBar.bounds
@@ -131,7 +205,9 @@ class ChatUIVC: MessagesViewController{
         
         /// Chat Header with profile (Navigation bar)
         chatNavBarView = ChatNavBar(frame: CGRect(x: 42, y: 0, width: navigationBound.width - 42, height: navigationBound.height))
-        chatNavBarView.setData(cellData: ChatCellViewData(profileImg: "profile_img1", title: "Rosalee Molina \(atIndex)", subTitle: "", lastMsgTime: "", isOnline: true, isTyping: false))
+        
+        chatHeaderData = setReciverInfo(data: reciverInfo)
+        chatNavBarView.setData(cellData: chatHeaderData)
         
         navigationController?.navigationBar.addSubview(chatNavBarView)
         chatNavBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -146,17 +222,28 @@ class ChatUIVC: MessagesViewController{
     func setMessageKitUI(){
 
     }
+    
+    func setReciverInfo(data: Participant) -> ChatCellViewData{
+        var chat = ChatCellViewData(
+            profileImg: "",
+            title: data.fullName,
+            subTitle: "",
+            lastMsgTime: "",
+            isOnline: false,
+            isTyping: false
+        )
+
+        return chat
+    }
 
 }
 
 
 
 
-
-extension ChatUIVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
+// MARK: - MessagesDataSource
+extension ChatUIVC: MessagesDataSource{
     
-    
-    // MARK: - MessagesDataSource
     func currentSender() -> MessageKit.SenderType {
         return currentUser
     }
@@ -168,9 +255,13 @@ extension ChatUIVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayD
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
         return messages.count
     }
-    
-    
-    // MARK: - MessagesLayoutDelegate
+   
+}
+
+
+
+// MARK: - MessagesLayoutDelegate
+extension ChatUIVC: MessagesLayoutDelegate{
     
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if message.messageId == "1"{
@@ -178,7 +269,7 @@ extension ChatUIVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayD
         }
         
 //        if messages[]{
-//            
+//
 //        }
         
         return 2
@@ -191,9 +282,13 @@ extension ChatUIVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayD
     
 
     
-    
-    // MARK: - MessagesDisplayDelegate
-    
+}
+
+
+
+
+// MARK: - MessagesDisplayDelegate
+extension ChatUIVC: MessagesDisplayDelegate{
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         if message.sender.senderId == "self"{
@@ -222,6 +317,43 @@ extension ChatUIVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayD
     }
     
     
+}
+
+
+
+
+// MARK: - InputBarAccessoryViewDelegate
+extension ChatUIVC: InputBarAccessoryViewDelegate{
+
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        
+        guard !text.replacingOccurrences(of: " ", with: "").isEmpty else{
+            AppHelper.printf(statement: "replacingOccurrences")
+            return
+        }
+        
+        
+        messages.append(Message(sender: currentUser,
+                                messageId: UUID().uuidString,
+                                sentDate: Date().addingTimeInterval(-16400),
+                                kind: .text(text)))
+        
+        messageInputBar.inputTextView.text = ""
+        messagesCollectionView.scrollToLastItem(animated: true)
+//        messagesCollectionView.reloadDataAndKeepOffset()
+        messagesCollectionView.reloadData()
+        AppHelper.printf(statement: text)
+    }
     
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, textViewTextDidChangeTo text: String) {
+
+        if text.isEmpty{
+//            SocketHelper.shared.socketEmit(event: .stopTyping, with: [])
+        }else{
+//            SocketHelper.shared.socketEmit(event: .typing, with: [])
+        }
+        
+    }
     
 }

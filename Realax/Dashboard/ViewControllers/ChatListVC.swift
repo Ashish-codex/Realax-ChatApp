@@ -11,8 +11,16 @@ class ChatListTableViewCell: UITableViewCell{
     
     @IBOutlet weak var chatCellView: ChatCellView!
     
-    func setData(data: ChatCellViewData){
-        chatCellView.setData(cellData: data)
+    func setData(data: Participant){
+        let chat = ChatCellViewData(
+            profileImg: "",
+            title: data.username,
+            subTitle: "",
+            lastMsgTime: "",
+            isOnline: false,
+            isTyping: false
+        )
+        chatCellView.setData(cellData: chat)
     }
     
 }
@@ -22,6 +30,10 @@ class ChatListVC: UIViewController{
     
     @IBOutlet weak var tableViewChatList: UITableView!
     var arrChatData:[ChatCellViewData] = []
+    var arrChatParticipant:[Participant] = []
+    var refreshController = UIRefreshControl()
+    
+    private var dashboardViewModel = DashboardViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +41,22 @@ class ChatListVC: UIViewController{
         tableViewChatList.delegate = self
         tableViewChatList.dataSource = self
         
-        addDumyData()
+        refreshController.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+        tableViewChatList.addSubview(refreshController)
+        
+        apiGetAllChatedList()
+//        addDumyData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+//        apiGetAllChatedList()
+    }
+    
+    
+    @objc func didPullToRefresh(){
+        apiGetAllChatedList()
+        refreshController.endRefreshing()
+    }
     
     func addDumyData(){
         
@@ -52,7 +77,7 @@ class ChatListVC: UIViewController{
 extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrChatData.count
+        arrChatParticipant.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -66,7 +91,7 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.setData(data: arrChatData[indexPath.row])
+        cell.setData(data: arrChatParticipant[indexPath.row])
         cell.selectionStyle = .none
         return cell
         
@@ -76,15 +101,57 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        AppHelper.printf(statement:"Slect at : \(indexPath.row)")
-        AppHelper.printf(statement:"\(navigationController?.navigationBar.frame)")
-        
         guard let chatUiVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatUIVC") as? ChatUIVC else {
             AppHelper.printf(statement:"Unable to load SettingVC")
             return
         }
         navigationController?.pushViewController(chatUiVC, animated: true)
         chatUiVC.atIndex = indexPath.row
+        chatUiVC.reciverInfo = arrChatParticipant[indexPath.row]
     }
+    
+}
+
+
+
+
+//MARK: - Api Service
+extension ChatListVC{
+    
+    func apiGetAllChatedList(){
+        
+        AppHelper.showProgressHUD(vc: self)
+        
+        dashboardViewModel.apiGetAllChated(reqUrl: .getAllChats, reqHttpMethod: .GET) { response in
+            
+            AppHelper.hideProgessHUD(vc: self)
+            switch response{
+            case .success(let resObj) :
+                DispatchQueue.main.async {
+                    
+                    self.arrChatParticipant.removeAll()
+                    for chatData in resObj.data[0].participants{
+                        self.arrChatParticipant.append(chatData)
+                    }
+                    
+                    self.tableViewChatList.reloadData()
+                }
+                break
+                
+                
+            case.failure(.message(let msg)) :
+                AppHelper.getErrorAlert(msg: msg, vc: self) { actionTitle in}
+                break
+                
+                
+            case.failure(.error(let err)) :
+                AppHelper.getErrorAlert(msg: err.localizedDescription, vc: self) { actionTitle in}
+                break
+                
+            }
+        }
+        
+    }
+    
     
 }

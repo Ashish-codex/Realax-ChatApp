@@ -20,4 +20,11 @@ extension UIImageView{
         self.image = self.image?.withRenderingMode(.alwaysTemplate)
         self.tintColor = color
     }
+    
+    
+    func loadImageUrl(url:URL){
+
+        
+    }
+    
 }

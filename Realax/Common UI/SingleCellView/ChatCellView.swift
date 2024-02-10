@@ -59,11 +59,20 @@ class ChatCellView: UIView{
     }
     
     
+//    public func setData1(cellData:ChatCellViewData){
+//        imgView.image = UIImage(named: cellData.profileImg)
+//        lblTitle.text = cellData.title
+//        lblSubTitle.text = cellData.subTitle
+//        lblLastMsgTime.text = "3m ago"
+//        lblTyping.text = cellData.isTyping ? "Typing" : ""
+//        viewOnlineStatus.backgroundColor = cellData.isOnline ? .userOnline : .userOffline
+//    }
+    
     public func setData(cellData:ChatCellViewData){
-        imgView.image = UIImage(named: cellData.profileImg)
+        imgView.image = cellData.profileImg == "" ? UIImage(named: "icon_profile_placeholder") : UIImage(named: cellData.profileImg)
         lblTitle.text = cellData.title
         lblSubTitle.text = cellData.subTitle
-        lblLastMsgTime.text = "3m ago"
+        lblLastMsgTime.text = cellData.lastMsgTime
         lblTyping.text = cellData.isTyping ? "Typing" : ""
         viewOnlineStatus.backgroundColor = cellData.isOnline ? .userOnline : .userOffline
     }

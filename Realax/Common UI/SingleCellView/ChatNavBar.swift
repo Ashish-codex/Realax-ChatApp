@@ -62,14 +62,25 @@ class ChatNavBar: UIView{
     
     
     
+//    public func setData1(cellData:ChatCellViewData){
+//        imgProfileImage.image = UIImage(named: cellData.profileImg)
+//        lblTitle.text = cellData.title
+//        lblIsOnline.text = (cellData.isTyping ? "Typing" :
+//                                (cellData.isOnline ? "Online" : ""))
+//        
+//    }
+    
+    public func isTyping(typing: Bool){
+        
+    }
+    
+    
     public func setData(cellData:ChatCellViewData){
-        imgProfileImage.image = UIImage(named: cellData.profileImg)
+        imgProfileImage.image = cellData.profileImg == "" ? UIImage(named: "icon_profile_placeholder") : UIImage(named: cellData.profileImg)
         lblTitle.text = cellData.title
         lblIsOnline.text = (cellData.isTyping ? "Typing" :
                                 (cellData.isOnline ? "Online" : ""))
         
     }
-    
-    
     
 }

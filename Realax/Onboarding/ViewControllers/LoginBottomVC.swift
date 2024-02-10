@@ -21,6 +21,14 @@ class LoginBottomVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewEmail.setText(text: "bfk@gmail.com")
+        viewEmail.setKeyboardType(type: .emailAddress)
+        
+        viewPassword.setText(text: "omkarj5171")
+        viewPassword.setKeyboardType(type: .default)
+        viewPassword.setImageFieldIcon(icon: UIImage(named: "icon_visibility_eye_hide")!)
+        viewPassword.delegate = self
+        
         btnGetLogin.customRoundedButton(radius: 10)
     }
     
@@ -47,7 +55,25 @@ class LoginBottomVC: UIViewController {
 }
 
 
+//MARK: - Protocol
+extension LoginBottomVC: TextFieldWithIconViewDelegate {
+    func onClickTextFieldIcon() {
+        if viewPassword.getImageFieldIcon() == UIImage(named: "icon_visibility_eye_hide") {
+            viewPassword.setImageFieldIcon(icon: UIImage(named: "icon_visibility_eye_unhide")!)
+            viewPassword.isSecureTextField(isSecure: false)
+        }else{
+            viewPassword.setImageFieldIcon(icon: UIImage(named: "icon_visibility_eye_hide")!)
+            viewPassword.isSecureTextField(isSecure: true)
+        }
+        
+    }
+  
+}
 
+
+
+
+//MARK: - Api Service
 extension LoginBottomVC{
     
     func apiLogin(){
@@ -60,7 +86,6 @@ extension LoginBottomVC{
             switch response{
             case .success(let resDict) :
                 
-                UserInfo.isLoggedIn = true
                 DispatchQueue.main.async {
                     guard let vc = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatHomeVC") as? ChatHomeVC else {
                         AppHelper.printf(statement:"Unable to load DashboardVC")

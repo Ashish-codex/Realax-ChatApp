@@ -13,6 +13,10 @@ enum DataError:Error {
     case message(_ msg: String)
 }
 
+
+struct EmptyCodableForGetReq:Codable{}
+
+
 typealias Handler = (Result<Data, DataError>) -> Void
 
 
@@ -25,19 +29,26 @@ class ApiService{
     private init(){}
     
 
-    func callAPI<T:Codable>(reqURL:ApiRoute, reqHeaders:[String: String]? = [:], reqObj:T, reqHttpMethod: ApiHttpMethod, completion: @escaping Handler) -> URLSessionDataTask?{
+    func callAPI<T:Codable>(reqURL:ApiRoute, reqHeaders:[String: String] = [:], reqObj:T, reqHttpMethod: ApiHttpMethod, completion: @escaping Handler) -> URLSessionDataTask?{
         
-        var reqData = Data()
+        
+        var reqData: Data?
         
         guard let url = URL(string: baseUrl + reqURL.rawValue) else{
-
             AppHelper.printf(statement:"Unable to process URL : \(reqURL.rawValue)")
             completion(.failure(.message("Unable to process URL : \(reqURL.rawValue)")))
             return nil
         }
         
+        var headers = reqHeaders
+        if (reqURL != ApiRoute.login && reqURL != ApiRoute.register){
+            headers["Authorization"] = UserInfo.accessToken ?? ""
+        }
+        
         do {
-            reqData = try JSONEncoder().encode(reqObj)
+            if (reqHttpMethod != ApiHttpMethod.GET){
+                reqData = try JSONEncoder().encode(reqObj)
+            }
 //            reqData = try JSONSerialization.data(withJSONObject: reqObj, options: [])
             
         } catch let err {
@@ -50,14 +61,15 @@ class ApiService{
         var request = URLRequest(url: url)
         request.httpMethod = reqHttpMethod.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.allHTTPHeaderFields = reqHeaders
+        request.allHTTPHeaderFields = headers
         request.cachePolicy = .reloadIgnoringCacheData
         request.httpBody = reqData
         
-        AppHelper.printf(statement: "---------Api Service--------")
+        AppHelper.printf(statement: "---------Api Request Start--------")
         AppHelper.printf(statement: "Point URL :: ---> \(url.description)")
-        AppHelper.printf(statement: "Request Headers :: ---> \(String(describing: reqHeaders?.toJson()))")
-        AppHelper.printf(statement: "Request Body :: ---> \(reqData.toJson())")
+        AppHelper.printf(statement: "Request Headers :: ---> \(headers.toJson())")
+        AppHelper.printf(statement: "Request Body :: ---> \(reqData?.toJson() ?? "{}")")
+        AppHelper.printf(statement: "---------Api Request End--------")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -87,10 +99,11 @@ class ApiService{
             }
             
             
+            AppHelper.printf(statement: "---------Api Response Start--------")
             AppHelper.printf(statement: "Point URL :: ---> \(String(describing: res.url?.description))")
             AppHelper.printf(statement: "Response Headers :: ---> \(resHeaders.toJson())")
             AppHelper.printf(statement: "Response Body :: ---> \(data.toJson())")
-            AppHelper.printf(statement: "---------Api Service--------")
+            AppHelper.printf(statement: "---------Api Response End--------")
             
             completion(.success(data))
             

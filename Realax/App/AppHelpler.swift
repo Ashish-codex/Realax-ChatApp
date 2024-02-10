@@ -74,3 +74,22 @@ class AppHelper{
     }
     
 }
+
+
+
+extension AppHelper{
+    
+    enum SocketEvents: String{
+        case connected = "connected"
+        case disconnect = "disconnect"
+        case joinChat = "joinChat"
+        case leaveChat = "leaveChat"
+        case updateGroupName = "updateGroupName"
+        case messageReceived = "messageReceived"
+        case newChat = "newChat"
+        case socketError = "socketError"
+        case stopTyping = "stopTyping"
+        case typing = "typing"
+ 
+    }
+}

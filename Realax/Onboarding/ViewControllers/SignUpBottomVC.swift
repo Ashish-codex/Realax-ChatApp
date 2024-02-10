@@ -90,7 +90,7 @@ class SignUpBottomVC: UIViewController {
         
         
         viewRole.setPlaceHolder(placeholder: "Role")
-        
+        viewRole.isSecureTextField(isSecure: false)
         
         viewPassword.setImageFieldIcon(icon: UIImage(named: "icon_visibility_eye_hide")!)
         viewRole.setImageFieldIcon(icon: UIImage(named: "arrow_drop_down")!)
@@ -114,10 +114,7 @@ extension SignUpBottomVC:TextFieldWithIconViewDelegate {
         }
         
     }
-    
-    
-    
-    
+  
 }
 
 
@@ -132,9 +129,9 @@ extension SignUpBottomVC {
             email: viewEmail.getText(),
             password: viewPassword.getText(),
             role: viewRole.getText(),
-            username: "",
-            fullName: viewFullName.getText(),
-            avatar: "")
+            username: viewFullName.getText(),
+            fullName: viewFullName.getText() )
+//            avatar: "")
         
         onboardingVM.apiRegisteration(reqUrl: .register, reqBody: reqData, reqHttpMethod: .POST) { response in
             

@@ -9,7 +9,8 @@ import Foundation
 
 struct ModelRegistrationREQ: Codable{
     
-    var email, password, role, username, fullName, avatar: String
+    var email, password, role, username, fullName: String
+//    , avatar: String
     
 }
 

@@ -22,6 +22,7 @@ class DashboardViewModel{
                     let logoutResponse = try JSONDecoder().decode(ModelLogoutRES.self, from: data)
                     
                     if logoutResponse.success{
+                        SocketHelper.shared.disconnectSocket()
                         complition(.success(logoutResponse))
                     }else{
                         complition(.failure(.message(logoutResponse.message)))
@@ -42,4 +43,79 @@ class DashboardViewModel{
             }
         }
     }
+    
+    
+    
+    func apiGetAllChated(reqUrl: ApiRoute, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelGetAllChated, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+
+        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getChatedResponse = try JSONDecoder().decode(ModelGetAllChated.self, from: data)
+
+                    if getChatedResponse.success{
+                        complition(.success(getChatedResponse))
+                    }else{
+                        complition(.failure(.message(getChatedResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+
+    
+    
+    
+    func apiGetAllNewChats(reqUrl: ApiRoute, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelGetAllNewChat, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+
+        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getNewChatedResponse = try JSONDecoder().decode(ModelGetAllNewChat.self, from: data)
+
+                    if getNewChatedResponse.success{
+                        complition(.success(getNewChatedResponse))
+                    }else{
+                        complition(.failure(.message(getNewChatedResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+
+    
 }

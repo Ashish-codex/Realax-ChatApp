@@ -15,6 +15,9 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
     
     @IBOutlet weak var viewPager: LZViewPager!
     
+    @IBOutlet weak var viewEdit: UIView!
+    
+    
     private var arrUIViewController:[UIViewController] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -26,6 +29,10 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
         super.viewDidLoad()
         
 //        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        
+        viewEdit.customRoundedView(radius: viewEdit.frame.height/2)
+        viewEdit.dropShadow(color: .black, opacity: 0.2, offSet: CGSize(width: -6, height: 6), radius: 6, scale: true)
         
         viewPager.delegate = self
         viewPager.dataSource = self
@@ -55,6 +62,10 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        SocketHelper.shared.connectSocket()
+    }
+    
     
     
     
@@ -73,6 +84,21 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
         searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
         
+    }
+    
+    
+    
+    @IBAction func actBtnEditChat(_ sender: Any) {
+        
+        guard let composeSearchVC = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_ComposeSearchUserVC") as? ComposeSearchUserVC else {
+            AppHelper.printf(statement: "Unable to load ID_ComposeSearchUserVC from ChatHomeVC")
+            return
+        }
+        
+        composeSearchVC.nv = self.navigationController
+        
+        let navController = UINavigationController(rootViewController: composeSearchVC)
+        present(navController, animated: true)
     }
     
     

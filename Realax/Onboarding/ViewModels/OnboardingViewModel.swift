@@ -51,7 +51,15 @@ class OnboardingViewModel{
                 do {
                     let loginResponse = try JSONDecoder().decode(ModelLoginRES.self, from: data)
                     
-                    complition(.success(loginResponse))
+                    if loginResponse.success{
+                        
+                        self.setUserInfo(userData: loginResponse.data.user, accesToken: loginResponse.data.accessToken, refreshToken: loginResponse.data.refreshToken)
+                        
+                        complition(.success(loginResponse))
+                    }else{
+                        complition(.failure(.message(loginResponse.message)))
+                    }
+                    
                     
                 } catch let error {
                     complition(.failure(.error(error)))
@@ -67,4 +75,21 @@ class OnboardingViewModel{
         }
     }
     
+}
+
+
+
+// MARK: - Private Utility Functions
+extension OnboardingViewModel{
+    
+    private func setUserInfo(userData: LoginUser, accesToken:String, refreshToken:String){
+        UserInfo.accessToken = accesToken
+        UserInfo.refreshToken = refreshToken
+        UserInfo.avatarURL = userData.avatar?.url ?? ""
+        UserInfo.role = userData.role
+        UserInfo.fullName = userData.fullName
+        UserInfo.userName = userData.username
+        UserInfo.email = userData.email
+        UserInfo.isLoggedIn = true
+    }
 }

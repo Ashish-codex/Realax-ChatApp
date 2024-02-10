@@ -17,6 +17,12 @@ class SettingVC: UIViewController {
     @IBOutlet weak var viewContainerProfile: UIView!
     @IBOutlet weak var viewHeader: UIView!
     
+    @IBOutlet weak var lblUserFullName: UILabel!
+    
+    @IBOutlet weak var lblUserName: UILabel!
+    
+    
+    
     private var dashboardViewModel = DashboardViewModel()
     
     override func viewDidLoad() {
@@ -44,6 +50,7 @@ class SettingVC: UIViewController {
         viewContainerProfile.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: -1, height: 1), radius: 8, scale: true)
         viewProfileImage.customRoundedView(radius: imgProfileImage.frame.height / 2, borderColor: UIColor.primaryThemeColor.cgColor, borderWidth: 2)
         
+        setUserDetail()
 
     }
     
@@ -82,6 +89,16 @@ class SettingVC: UIViewController {
     
     
     @IBAction func actBtnDeleteAccount(_ sender: Any) {
+    }
+    
+    
+    
+    
+    func setUserDetail(){
+    
+        imgProfileImage.image = UIImage(named: "icon_profile_placeholder")
+        lblUserFullName.text = UserInfo.fullName ?? "N/A"
+        lblUserName.text = UserInfo.userName ?? "N/A"
     }
     
     
