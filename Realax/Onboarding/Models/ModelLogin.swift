@@ -26,18 +26,18 @@ struct ModelLoginRES: Codable {
 
 // MARK: - DataClass
 struct LoginDataClass: Codable {
-    let accessToken: String
-    let user: LoginUser
-    let refreshToken: String
+    let accessToken: String?
+    let user: LoginUser?
+    let refreshToken: String?
 }
 
 // MARK: - User
 struct LoginUser: Codable {
-    let id: String
+    let id: String?
     let avatar: LoginAvatar?
-    let v: Int
-    let role, fullName, username, email: String
-    let createdAt, updatedAt: String
+    let v: Int?
+    let role, fullName, username, email: String?
+    let createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -49,8 +49,8 @@ struct LoginUser: Codable {
 
 // MARK: - Avatar
 struct LoginAvatar: Codable {
-    let id, localPath: String
-    let url: String
+    let id, localPath: String?
+    let url: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

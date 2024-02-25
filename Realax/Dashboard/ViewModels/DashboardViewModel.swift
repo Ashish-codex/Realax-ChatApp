@@ -13,7 +13,7 @@ class DashboardViewModel{
     
     func apiLogout(reqUrl: ApiRoute, reqBody: ModelLogoutREQ, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelLogoutRES, DataError>)->Void){
         
-        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
             
             switch response{
             case .success(let data) :
@@ -23,6 +23,7 @@ class DashboardViewModel{
                     
                     if logoutResponse.success{
                         SocketHelper.shared.disconnectSocket()
+                        UserInfo.accessToken = ""
                         complition(.success(logoutResponse))
                     }else{
                         complition(.failure(.message(logoutResponse.message)))
@@ -50,7 +51,7 @@ class DashboardViewModel{
 
         let reqBody = EmptyCodableForGetReq()
 
-        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
 
             switch response{
             case .success(let data) :
@@ -87,7 +88,7 @@ class DashboardViewModel{
 
         let reqBody = EmptyCodableForGetReq()
 
-        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
 
             switch response{
             case .success(let data) :
@@ -99,6 +100,43 @@ class DashboardViewModel{
                         complition(.success(getNewChatedResponse))
                     }else{
                         complition(.failure(.message(getNewChatedResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+
+    
+    
+    func apiCreateOneToOneChat(reqUrl: ApiRoute, reqHttpMethod: ApiHttpMethod, reciverID:String, complition: @escaping (Result<ModelOneToOneChatRES, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+        let url = reqUrl.rawValue+"\(reciverID)"
+
+        _ = ApiService.shared.callAPI(reqURL: url, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getOneToOneChatResponse = try JSONDecoder().decode(ModelOneToOneChatRES.self, from: data)
+
+                    if getOneToOneChatResponse.success{
+                        complition(.success(getOneToOneChatResponse))
+                    }else{
+                        complition(.failure(.message(getOneToOneChatResponse.message)))
                     }
 
 

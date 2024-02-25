@@ -64,6 +64,7 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
     
     override func viewDidAppear(_ animated: Bool) {
         SocketHelper.shared.connectSocket()
+//        SocketHandler.sharedInstance.establishConnection()
     }
     
     

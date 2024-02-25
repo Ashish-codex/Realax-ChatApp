@@ -17,7 +17,7 @@ struct ModelGetAllNewChat: Codable {
 
 // MARK: - Datum
 struct NewChatData: Codable {
-    let id: String
+    let id: String?
     let username, email: String?
     let avatar: LoginAvatar?
 
@@ -26,3 +26,6 @@ struct NewChatData: Codable {
         case username, email, avatar
     }
 }
+
+
+

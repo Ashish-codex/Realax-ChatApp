@@ -115,6 +115,8 @@ extension ComposeSearchUserVC: UISearchBarDelegate{
 }
 
 
+
+//MARK: - Tableview Delegates
 extension ComposeSearchUserVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -148,12 +150,16 @@ extension ComposeSearchUserVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         guard let chatUiVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatUIVC") as? ChatUIVC else {
             AppHelper.printf(statement:"Unable to load SettingVC")
             return
         }
         
         let cellData = isSearching ? arrSearchingNewChatParticipant[indexPath.row] : arrNewChatParticipant[indexPath.row]
+        
+        
+        apiCreateOneToOneChat(reciverId: cellData.id ?? "")
         
         dismiss(animated: true) {
             
@@ -200,6 +206,35 @@ extension ComposeSearchUserVC{
                     
                     self.tableView.reloadData()
                 }
+                break
+                
+                
+            case.failure(.message(let msg)) :
+                AppHelper.getErrorAlert(msg: msg, vc: self) { actionTitle in}
+                break
+                
+                
+            case.failure(.error(let err)) :
+                AppHelper.getErrorAlert(msg: err.localizedDescription, vc: self) { actionTitle in}
+                break
+                
+            }
+        }
+        
+    }
+    
+    
+    func apiCreateOneToOneChat(reciverId: String){
+        
+//        AppHelper.showProgressHUD(vc: self)
+        
+        
+        dashboardViewModel.apiCreateOneToOneChat(reqUrl: .createOneToOneChat, reqHttpMethod: .POST, reciverID: reciverId) { response in
+            
+//            AppHelper.hideProgessHUD(vc: self)
+            switch response{
+            case .success(let resObj) :
+                UserInfo.roomID = resObj.data.id ?? ""
                 break
                 
                 

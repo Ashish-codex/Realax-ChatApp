@@ -17,11 +17,11 @@ struct ModelGetAllChated: Codable {
 
 // MARK: - Datum
 struct ChatData: Codable {
-    let id, name: String
-    let isGroupChat: Bool
-    let participants: [Participant]
-    let admin, createdAt, updatedAt: String
-    let v: Int
+    let id, name: String?
+    let isGroupChat: Bool?
+    let participants: [Participant]?
+    let admin, createdAt, updatedAt: String?
+    let v: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -32,11 +32,11 @@ struct ChatData: Codable {
 
 // MARK: - Participant
 struct Participant: Codable {
-    let id, username, email, role: String
-    let fullName: String
+    let id, username, email, role: String?
+    let fullName: String?
     let avatar: LoginAvatar?
-    let createdAt, updatedAt: String
-    let v: Int
+    let createdAt, updatedAt: String?
+    let v: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

@@ -37,7 +37,27 @@ class DashboardVC: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
         
-        AppHelper.printf(statement:"pressd..")
+        
+//        guard let chatUiVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatUIVC") as? ChatUIVC else {
+//            AppHelper.printf(statement:"Unable to load SettingVC")
+//            return
+//        }
+//
+//        navigationController?.pushViewController(chatUiVC, animated: true)
+//
+//        chatUiVC.atIndex = 0
+//        chatUiVC.reciverInfo = Participant(
+//            id: "",
+//            username:  "",
+//            email: "",
+//            role: "",
+//            fullName:  "",
+//            avatar: nil,
+//            createdAt: "",
+//            updatedAt: "",
+//            v: 0)
+        
+        
     }
     
     

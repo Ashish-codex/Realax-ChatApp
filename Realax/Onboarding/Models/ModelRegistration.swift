@@ -25,17 +25,17 @@ struct ModelRegistrationRES: Codable {
 
 // MARK: - DataClass
 struct RegistrationDataClass: Codable {
-    let user: RegistrationUser
+    let user: RegistrationUser?
 }
 
 // MARK: - User
 struct RegistrationUser: Codable {
-    let v: Int
-    let id: String
-    let avatar: RegistrationAvatar
-    let createdAt, email: String
-    let isEmailVerified: Bool
-    let loginType, role, updatedAt, username: String
+    let v: Int?
+    let id: String?
+    let avatar: RegistrationAvatar?
+    let createdAt, email: String?
+    let isEmailVerified: Bool?
+    let loginType, role, updatedAt, username: String?
 
     enum CodingKeys: String, CodingKey {
         case v = "__v"
@@ -46,8 +46,8 @@ struct RegistrationUser: Codable {
 
 // MARK: - Avatar
 struct RegistrationAvatar: Codable {
-    let id, localPath: String
-    let url: String
+    let id, localPath: String?
+    let url: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

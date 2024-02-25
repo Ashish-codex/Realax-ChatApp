@@ -97,8 +97,8 @@ class SettingVC: UIViewController {
     func setUserDetail(){
     
         imgProfileImage.image = UIImage(named: "icon_profile_placeholder")
-        lblUserFullName.text = UserInfo.fullName ?? "N/A"
-        lblUserName.text = UserInfo.userName ?? "N/A"
+        lblUserFullName.text = UserInfo.fullName
+        lblUserName.text = "@\(UserInfo.userName)"
     }
     
     

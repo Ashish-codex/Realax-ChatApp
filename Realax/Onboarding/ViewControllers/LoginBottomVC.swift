@@ -21,10 +21,10 @@ class LoginBottomVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewEmail.setText(text: "bfk@gmail.com")
+        viewEmail.setText(text: "chrisevans25@gmail.com")
         viewEmail.setKeyboardType(type: .emailAddress)
         
-        viewPassword.setText(text: "omkarj5171")
+        viewPassword.setText(text: "chris123")
         viewPassword.setKeyboardType(type: .default)
         viewPassword.setImageFieldIcon(icon: UIImage(named: "icon_visibility_eye_hide")!)
         viewPassword.delegate = self

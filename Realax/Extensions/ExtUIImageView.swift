@@ -22,9 +22,21 @@ extension UIImageView{
     }
     
     
-    func loadImageUrl(url:URL){
-
-        
-    }
+    func loadImageUrl(url: URL) {
+      DispatchQueue.global().async { [weak self] in
+          if let data = try? Data(contentsOf: url) {
+              if let image = UIImage(data: data) {
+                  DispatchQueue.main.async {
+                      self?.image = image
+                  }
+              }
+          }
+          else{
+              AppHelper.printf(statement: "Image Error: Failed to load image")
+              self?.image = UIImage(named: "img_photo_placeholder")
+          }
+       }
+     }
+     
     
 }

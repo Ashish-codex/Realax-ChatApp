@@ -25,24 +25,25 @@ class ApiService{
     
     public static let shared = ApiService()
     private var baseUrl = "https://chatsapp-nw05.onrender.com/"
+//    private var baseUrl = "http://ec2-52-206-76-43.compute-1.amazonaws.com:8000/"
     
     private init(){}
     
 
-    func callAPI<T:Codable>(reqURL:ApiRoute, reqHeaders:[String: String] = [:], reqObj:T, reqHttpMethod: ApiHttpMethod, completion: @escaping Handler) -> URLSessionDataTask?{
+    func callAPI<T:Codable>(reqURL:String, reqHeaders:[String: String] = [:], reqObj:T, reqHttpMethod: ApiHttpMethod, completion: @escaping Handler) -> URLSessionDataTask?{
         
         
         var reqData: Data?
         
-        guard let url = URL(string: baseUrl + reqURL.rawValue) else{
-            AppHelper.printf(statement:"Unable to process URL : \(reqURL.rawValue)")
-            completion(.failure(.message("Unable to process URL : \(reqURL.rawValue)")))
+        guard let url = URL(string: baseUrl + reqURL) else{
+            AppHelper.printf(statement:"Unable to process URL : \(reqURL)")
+            completion(.failure(.message("Unable to process URL : \(reqURL)")))
             return nil
         }
         
         var headers = reqHeaders
-        if (reqURL != ApiRoute.login && reqURL != ApiRoute.register){
-            headers["Authorization"] = UserInfo.accessToken ?? ""
+        if (reqURL != ApiRoute.login.rawValue && reqURL != ApiRoute.register.rawValue){
+            headers["Authorization"] = UserInfo.accessToken
         }
         
         do {
@@ -59,15 +60,30 @@ class ApiService{
         
         
         var request = URLRequest(url: url)
+        var multipart = MultipartRequest()
         request.httpMethod = reqHttpMethod.rawValue
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if (reqURL.contains(ApiRoute.sendMessage.rawValue)){
+            
+            if let sendMessageReq = reqObj as? ModelSendMessageREQ{
+                multipart.add(key: "content", value: sendMessageReq.content ?? "")
+                multipart.add(key: "attachments", value: sendMessageReq.attachments ?? "")
+                request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
+                reqData = multipart.httpBody
+            }
+
+        }else{
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+        }
+        
         request.allHTTPHeaderFields = headers
         request.cachePolicy = .reloadIgnoringCacheData
         request.httpBody = reqData
         
         AppHelper.printf(statement: "---------Api Request Start--------")
         AppHelper.printf(statement: "Point URL :: ---> \(url.description)")
-        AppHelper.printf(statement: "Request Headers :: ---> \(headers.toJson())")
+        AppHelper.printf(statement: "Request Headers :: ---> \(request.allHTTPHeaderFields?.toJson() ?? "{ }" )")
         AppHelper.printf(statement: "Request Body :: ---> \(reqData?.toJson() ?? "{}")")
         AppHelper.printf(statement: "---------Api Request End--------")
         
@@ -105,7 +121,27 @@ class ApiService{
             AppHelper.printf(statement: "Response Body :: ---> \(data.toJson())")
             AppHelper.printf(statement: "---------Api Response End--------")
             
-            completion(.success(data))
+            
+            switch res.statusCode {
+                
+            case 200:
+                completion(.success(data))
+                break
+                
+            case 500:
+                completion(.failure(.message("Api Error: Internal Server Error")))
+                break
+                
+            case 404:
+                completion(.failure(.message("Api Error: Not Found")))
+                break
+                
+            default:
+                completion(.success(data))
+                break
+            }
+            
+//            completion(.success(data))
             
         }
         

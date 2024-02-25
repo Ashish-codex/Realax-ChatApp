@@ -333,8 +333,8 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msU-BT-WKe">
-                                                <rect key="frame" x="112" y="53.5" width="97" height="17"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <rect key="frame" x="108" y="52.5" width="111" height="19.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                                 <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -372,7 +372,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Pbm-8U-chA" secondAttribute="trailing" id="SKq-Xe-Bku"/>
                                             <constraint firstAttribute="trailing" secondItem="YBx-lB-zqS" secondAttribute="trailing" constant="20" id="TM5-bb-2IX"/>
                                             <constraint firstItem="msU-BT-WKe" firstAttribute="centerY" secondItem="rjv-KX-sga" secondAttribute="centerY" constant="12" id="cnL-2Q-Iql"/>
-                                            <constraint firstItem="msU-BT-WKe" firstAttribute="leading" secondItem="rjv-KX-sga" secondAttribute="trailing" constant="28" id="h2R-mz-coZ"/>
+                                            <constraint firstItem="msU-BT-WKe" firstAttribute="leading" secondItem="rjv-KX-sga" secondAttribute="trailing" constant="24" id="h2R-mz-coZ"/>
                                             <constraint firstItem="AVu-Ab-1Ch" firstAttribute="centerY" secondItem="rjv-KX-sga" secondAttribute="centerY" constant="-12" id="n1p-VX-hn0"/>
                                             <constraint firstItem="Pbm-8U-chA" firstAttribute="leading" secondItem="LXd-hj-KSP" secondAttribute="leading" id="sMA-91-Gus"/>
                                         </constraints>

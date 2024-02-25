@@ -14,7 +14,7 @@ class ChatListTableViewCell: UITableViewCell{
     func setData(data: Participant){
         let chat = ChatCellViewData(
             profileImg: "",
-            title: data.username,
+            title: data.username ?? "N/A",
             subTitle: "",
             lastMsgTime: "",
             isOnline: false,
@@ -23,14 +23,19 @@ class ChatListTableViewCell: UITableViewCell{
         chatCellView.setData(cellData: chat)
     }
     
+//    func setData(cellData: ChatCellViewData){
+//        chatCellView.setData1(cellData: cellData)
+//    }
+    
 }
 
 
 class ChatListVC: UIViewController{
     
     @IBOutlet weak var tableViewChatList: UITableView!
-    var arrChatData:[ChatCellViewData] = []
+    var arrChatCellData:[ChatCellViewData] = []
     var arrChatParticipant:[Participant] = []
+    var arrChatData:[ChatData] = []
     var refreshController = UIRefreshControl()
     
     private var dashboardViewModel = DashboardViewModel()
@@ -44,12 +49,12 @@ class ChatListVC: UIViewController{
         refreshController.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         tableViewChatList.addSubview(refreshController)
         
-        apiGetAllChatedList()
+//        apiGetAllChatedList()
 //        addDumyData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        apiGetAllChatedList()
+        apiGetAllChatedList()
     }
     
     
@@ -61,7 +66,7 @@ class ChatListVC: UIViewController{
     func addDumyData(){
         
         for _ in 0...20{
-            arrChatData.append(ChatCellViewData(profileImg: "profile_img1", title: "Dainna Smlley", subTitle: "Introducing your schedule today.", lastMsgTime: "3m ago", isOnline: true, isTyping: true))
+            arrChatCellData.append(ChatCellViewData(profileImg: "profile_img1", title: "Dainna Smlley", subTitle: "Introducing your schedule today.", lastMsgTime: "3m ago", isOnline: true, isTyping: true))
             
         }
         
@@ -77,6 +82,7 @@ class ChatListVC: UIViewController{
 extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        arrChatCellData.count
         arrChatParticipant.count
     }
     
@@ -92,6 +98,7 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.setData(data: arrChatParticipant[indexPath.row])
+//        cell.setData(cellData: arrChatCellData[indexPath.row])
         cell.selectionStyle = .none
         return cell
         
@@ -108,6 +115,7 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(chatUiVC, animated: true)
         chatUiVC.atIndex = indexPath.row
         chatUiVC.reciverInfo = arrChatParticipant[indexPath.row]
+        UserInfo.roomID = arrChatData[indexPath.row].id ?? ""
     }
     
 }
@@ -120,18 +128,27 @@ extension ChatListVC{
     
     func apiGetAllChatedList(){
         
-        AppHelper.showProgressHUD(vc: self)
+//        AppHelper.showProgressHUD(vc: self)
         
         dashboardViewModel.apiGetAllChated(reqUrl: .getAllChats, reqHttpMethod: .GET) { response in
             
-            AppHelper.hideProgessHUD(vc: self)
+//            AppHelper.hideProgessHUD(vc: self)
             switch response{
             case .success(let resObj) :
                 DispatchQueue.main.async {
                     
                     self.arrChatParticipant.removeAll()
-                    for chatData in resObj.data[0].participants{
-                        self.arrChatParticipant.append(chatData)
+                    self.arrChatData.removeAll()
+                    for item in resObj.data{
+                        self.arrChatData.append(item)
+                        if let participants = item.participants{
+                            for participant in participants {
+                                if participant.username != UserInfo.userName{
+                                    self.arrChatParticipant.append(participant)
+                                }
+                            }
+                        }
+
                     }
                     
                     self.tableViewChatList.reloadData()

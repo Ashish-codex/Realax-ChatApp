@@ -9,7 +9,8 @@ import Foundation
 
 enum ApiRoute: String {
     
-    case baseUrl = "https://chatsapp-nw05.onrender.com/"
+    case baseUrl = "https://chatsapp-nw05.onrender.com"
+//    case baseUrl = "http://ec2-52-206-76-43.compute-1.amazonaws.com:8000/"
     
     //Auth Api
     case refreshToken = "api/v1/users/refresh-token"
@@ -24,6 +25,9 @@ enum ApiRoute: String {
     case getGroupChatDetail = "api/v1/chat-app/chats/group/:chatId"
     case leaveGroupChat = "api/v1/chat-app/leave/group/:chatId"
     case createGroupChat = "api/v1/chat-app/group"
-    case createOneToOneChat = "api/v1/chat-app/c/:receiverId"
+    case createOneToOneChat = "api/v1/chat-app/chats/c/"  //{/:roomID}
+    
+    case sendMessage = "api/v1/chat-app/messages/"        //{/:roomID}
+//    case reciveMessage = "api/v1/chat-app/messages/"
     
 }

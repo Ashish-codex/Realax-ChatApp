@@ -14,7 +14,7 @@ class OnboardingViewModel{
     
     func apiRegisteration(reqUrl: ApiRoute, reqBody: ModelRegistrationREQ, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelRegistrationRES, DataError>)->Void){
         
-        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
             
             switch response{
             case .success(let data) :
@@ -43,7 +43,7 @@ class OnboardingViewModel{
     
     func apiLogin(reqUrl: ApiRoute, reqBody: ModelLoginREQ, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelLoginRES, DataError>)->Void){
         
-        _ = ApiService.shared.callAPI(reqURL: reqUrl, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
             
             switch response{
             case .success(var data) :
@@ -53,7 +53,10 @@ class OnboardingViewModel{
                     
                     if loginResponse.success{
                         
-                        self.setUserInfo(userData: loginResponse.data.user, accesToken: loginResponse.data.accessToken, refreshToken: loginResponse.data.refreshToken)
+                        self.setUserInfo(
+                            userData: loginResponse.data.user,
+                            accesToken: loginResponse.data.accessToken ?? "",
+                            refreshToken: loginResponse.data.refreshToken ?? "")
                         
                         complition(.success(loginResponse))
                     }else{
@@ -82,14 +85,14 @@ class OnboardingViewModel{
 // MARK: - Private Utility Functions
 extension OnboardingViewModel{
     
-    private func setUserInfo(userData: LoginUser, accesToken:String, refreshToken:String){
+    private func setUserInfo(userData: LoginUser?, accesToken:String, refreshToken:String){
         UserInfo.accessToken = accesToken
         UserInfo.refreshToken = refreshToken
-        UserInfo.avatarURL = userData.avatar?.url ?? ""
-        UserInfo.role = userData.role
-        UserInfo.fullName = userData.fullName
-        UserInfo.userName = userData.username
-        UserInfo.email = userData.email
+        UserInfo.avatarURL = userData?.avatar?.url ?? ""
+        UserInfo.role = userData?.role ?? ""
+        UserInfo.fullName = userData?.fullName ?? ""
+        UserInfo.userName = userData?.username ?? ""
+        UserInfo.email = userData?.email ?? ""
         UserInfo.isLoggedIn = true
     }
 }

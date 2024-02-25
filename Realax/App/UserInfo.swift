@@ -101,4 +101,7 @@ struct UserInfo{
     }
     
     
+    static var roomID:String = ""
+    
+    
 }

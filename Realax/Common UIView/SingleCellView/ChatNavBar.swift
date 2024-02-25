@@ -71,7 +71,7 @@ class ChatNavBar: UIView{
 //    }
     
     public func isTyping(typing: Bool){
-        
+        lblIsOnline.text = typing ? "Typing.." : "Online"
     }
     
     
