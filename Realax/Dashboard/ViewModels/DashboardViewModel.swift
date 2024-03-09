@@ -156,4 +156,39 @@ class DashboardViewModel{
     }
 
     
+    
+    
+    func apiCreateGroupChat(reqUrl: ApiRoute, reqBody:ModelCreateGroupREQ, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelCreateGroupRES, DataError>)->Void){
+
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getGroupChatResponse = try JSONDecoder().decode(ModelCreateGroupRES.self, from: data)
+
+                    if getGroupChatResponse.success{
+                        complition(.success(getGroupChatResponse))
+                    }else{
+                        complition(.failure(.message(getGroupChatResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+
+    
 }

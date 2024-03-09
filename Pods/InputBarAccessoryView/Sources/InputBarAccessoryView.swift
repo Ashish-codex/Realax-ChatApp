@@ -907,7 +907,10 @@ open class InputBarAccessoryView: UIView {
     /// Calls each items `keyboardEditingEndsAction` method
     @objc
     open func inputTextViewDidEndEditing() {
-        items.forEach { $0.keyboardEditingEndsAction() }
+        items.forEach {
+            $0.keyboardEditingEndsAction()
+            print("keyboardEditingEndsAction")
+        }
     }
     
     // MARK: - Plugins

@@ -24,8 +24,8 @@ typealias Handler = (Result<Data, DataError>) -> Void
 class ApiService{
     
     public static let shared = ApiService()
-    private var baseUrl = "https://chatsapp-nw05.onrender.com/"
-//    private var baseUrl = "http://ec2-52-206-76-43.compute-1.amazonaws.com:8000/"
+//    private var baseUrl = "https://chatsapp-nw05.onrender.com/"
+    private var baseUrl = "http://ec2-52-206-76-43.compute-1.amazonaws.com:8000/"
     
     private init(){}
     
@@ -66,8 +66,15 @@ class ApiService{
         if (reqURL.contains(ApiRoute.sendMessage.rawValue)){
             
             if let sendMessageReq = reqObj as? ModelSendMessageREQ{
-                multipart.add(key: "content", value: sendMessageReq.content ?? "")
-                multipart.add(key: "attachments", value: sendMessageReq.attachments ?? "")
+                
+                if sendMessageReq.content != nil{
+                    multipart.add(key: "content", value: sendMessageReq.content ?? "")
+                }
+                
+                if sendMessageReq.attachments != nil{
+                    multipart.add(key: "attachments", fileData: sendMessageReq.attachments ?? Data())
+                }
+                
                 request.setValue(multipart.httpContentTypeHeadeValue, forHTTPHeaderField: "Content-Type")
                 reqData = multipart.httpBody
             }
@@ -140,8 +147,7 @@ class ApiService{
                 completion(.success(data))
                 break
             }
-            
-//            completion(.success(data))
+
             
         }
         

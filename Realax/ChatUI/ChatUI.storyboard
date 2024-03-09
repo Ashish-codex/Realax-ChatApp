@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp3-LK-FU5" userLabel="View Header">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="9gV-vr-bZX"/>
+                                            <constraint firstAttribute="height" id="9gV-vr-bZX"/>
                                         </constraints>
                                     </view>
                                 </subviews>

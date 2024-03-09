@@ -30,12 +30,14 @@ class ComposeSearchUserVC: UIViewController {
 
     
     @IBOutlet weak var tableView: UITableView!
-    var nv: UINavigationController?
+    var parentSelf: UINavigationController?
     var arrChatData:[ChatCellViewData] = []
     var arrNewChatParticipant:[NewChatData] = []
     var arrSearchingNewChatParticipant:[NewChatData] = []
     var isSearching = false
     private var dashboardViewModel = DashboardViewModel()
+    
+    @IBOutlet weak var imgNewGrp: UIImageView!
     
     private let searchBarUser:UISearchBar = {
         let searchBar = UISearchBar()
@@ -54,6 +56,7 @@ class ComposeSearchUserVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        imgNewGrp.setImageColor(color: .primaryThemeColor)
         navigationController?.navigationBar.topItem?.titleView = searchBarUser
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(onClickCancel))
     
@@ -71,6 +74,24 @@ class ComposeSearchUserVC: UIViewController {
 //            self.tableView.reloadData()
 //        }
     }
+    
+    
+    
+    
+    @IBAction func actBtnNewGroup(_ sender: Any) {
+        
+        guard let creatGrpVC = UIStoryboard(name: "Dashboard", bundle: nil).instantiateViewController(withIdentifier: "ID_CreateNewGroupVC") as? CreateNewGroupVC else {
+            AppHelper.printf(statement:"Unable to load SettingVC")
+            return
+        }
+        
+        dismiss(animated: true) {
+            self.parentSelf?.pushViewController(creatGrpVC, animated: true)
+        }
+        
+    }
+    
+    
     
     
     @objc func onClickCancel(){
@@ -164,7 +185,7 @@ extension ComposeSearchUserVC: UITableViewDelegate, UITableViewDataSource {
         dismiss(animated: true) {
             
 //            AppHelper.printf(statement:"Slect at : \(indexPath.row)")
-            self.nv?.pushViewController(chatUiVC, animated: true)
+            self.parentSelf?.pushViewController(chatUiVC, animated: true)
             chatUiVC.atIndex = indexPath.row
             chatUiVC.reciverInfo = Participant(
                 id: "",

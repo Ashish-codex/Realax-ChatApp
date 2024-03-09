@@ -9,7 +9,7 @@ import Foundation
 
 struct ModelSendMessageREQ:Codable{
     var content: String? = nil
-    var attachments: String? = nil
+    var attachments: Data? = nil
 }
 
 

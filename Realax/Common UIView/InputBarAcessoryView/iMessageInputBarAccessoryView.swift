@@ -8,7 +8,13 @@
 import Foundation
 import InputBarAccessoryView
 
+protocol iMessageButtonActionDelegate{
+    func onClickAttachment()
+}
+
 class iMessageInputBarAccessoryView: InputBarAccessoryView{
+    
+    var iMessageDelegate: iMessageButtonActionDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -83,7 +89,7 @@ class iMessageInputBarAccessoryView: InputBarAccessoryView{
                 $0.setSize(CGSize(width: 28, height: 38), animated: false)
 //                $0.backgroundColor = .gray
             }.onTouchUpInside { _ in
-                print("Item Tapped")
+                self.iMessageDelegate?.onClickAttachment()
         }
     }
     

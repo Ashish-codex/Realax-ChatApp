@@ -6,3 +6,10 @@ ${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework
 ${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
+${BUILT_PRODUCTS_DIR}/ZegoPluginAdapter/ZegoPluginAdapter.framework
+${BUILT_PRODUCTS_DIR}/ZegoUIKit/ZegoUIKit.framework
+${BUILT_PRODUCTS_DIR}/ZegoUIKitPrebuiltCall/ZegoUIKitPrebuiltCall.framework
+${BUILT_PRODUCTS_DIR}/ZegoUIKitSignalingPlugin/ZegoUIKitSignalingPlugin.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/ZIM/ZIM.framework/ZIM
+${PODS_XCFRAMEWORKS_BUILD_DIR}/ZPNs/ZPNs.framework/ZPNs
+${PODS_XCFRAMEWORKS_BUILD_DIR}/ZegoExpressEngine/ZegoExpressEngine.framework/ZegoExpressEngine

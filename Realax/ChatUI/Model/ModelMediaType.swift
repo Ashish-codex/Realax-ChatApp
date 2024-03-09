@@ -10,7 +10,7 @@ import MessageKit
 import UIKit
 
 
-struct ImageMediaItem: MediaItem {
+struct MediaImageItem: MediaItem {
   var url: URL?
   var image: UIImage?
   var placeholderImage: UIImage
@@ -28,4 +28,16 @@ struct ImageMediaItem: MediaItem {
     placeholderImage = UIImage(named: "img_photo_placeholder")!
       
   }
+}
+
+
+
+struct MediaLinkItem: LinkItem {
+    var text: String?
+    var attributedText: NSAttributedString?
+    var url: URL
+    var title: String?
+    var teaser: String
+    var thumbnailImage: UIImage
+    
 }

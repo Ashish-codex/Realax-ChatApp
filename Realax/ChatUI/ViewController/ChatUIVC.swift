@@ -9,6 +9,7 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 import SocketIO
+import UniformTypeIdentifiers
 
 struct Sender:SenderType{
     var senderId: String
@@ -38,7 +39,7 @@ class ChatUIVC: MessagesViewController{
     var reciverInfo: Participant!
     var chatHeaderData:ChatCellViewData!
     private var chatViewModel = ChatViewModel()
-    private var inputBar: InputBarAccessoryView!
+    private var iMessageInputBar: iMessageInputBarAccessoryView!
     
     
     
@@ -101,6 +102,7 @@ class ChatUIVC: MessagesViewController{
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messageCellDelegate = self
 //        messageInputBar.delegate = self
 //        messageInputBar.becomeFirstResponder()
         scrollsToLastItemOnKeyboardBeginsEditing = true
@@ -108,11 +110,13 @@ class ChatUIVC: MessagesViewController{
         showMessageTimestampOnSwipeLeft = true
         
         
-        inputBar = iMessageInputBarAccessoryView()
-        inputBar.delegate = self
-        inputBar.becomeFirstResponder()
-        messageInputBar = inputBar
+        iMessageInputBar = iMessageInputBarAccessoryView()
+        iMessageInputBar.delegate = self
+        iMessageInputBar.iMessageDelegate = self
+        iMessageInputBar.becomeFirstResponder()
+        messageInputBar = iMessageInputBar
         
+
     }
     
     func addDummyMessages(){
@@ -191,68 +195,37 @@ class ChatUIVC: MessagesViewController{
         }
         
         SocketHelper.shared.socketOn(event: .stopTyping) { data in
-            self.chatNavBarView.isTyping(typing: false)
+            DispatchQueue.main.async {
+                self.chatNavBarView.isTyping(typing: false)
+            }
         }
         
         
         SocketHelper.shared.socketOn(event: .messageReceived) { data in
-            if let msgStr = data.first as? String{
-                AppHelper.printf(statement: "Event : messageReceived\n\(msgStr)")
-//                if let msgData = msgStr.data(using: .utf8){
-//
-//                    do {
-//                        let getAllMessages = try JSONDecoder().decode(ModelGetAllMessages.self, from: msgData)
-//
-//
-////                        if item.sender?.username == UserInfo.userName{
-////                            if let msgContent = item.content, msgContent != "" {
-////                                self.messages.append(Message(
-////                                    sender: self.currentUser,
-////                                    messageId: item.id ?? UUID().uuidString,
-////                                    sentDate: Date(),
-////                                    kind: .text("\(msgContent)")))
-////                            }else{
-////                                self.messages.append(Message(
-////                                    sender: self.currentUser,
-////                                    messageId: item.id ?? UUID().uuidString,
-////                                    sentDate: Date(),
-////                                    kind: .text("ATTACHMENT..")))
-////                            }
-////
-////                        }else{
-////
-////                            if let msgContent = item.content, msgContent != "" {
-////                                self.messages.append(Message(
-////                                    sender: self.otherUser,
-////                                    messageId: item.id ?? UUID().uuidString,
-////                                    sentDate: Date(),
-////                                    kind: .text("\(msgContent)")))
-////                            }else{
-////                                self.messages.append(Message(
-////                                    sender: Sender(senderId: "other", displayName: "\(item.sender?.username ?? "N/A")"),
-////                                    messageId: item.id ?? UUID().uuidString,
-////                                    sentDate: Date(),
-////                                    kind: .text("ATTACHMENT..")))
-////                            }
-////
-////
-////                        }
-////
-//
-//
-//                    } catch let err {
-//                        AppHelper.getErrorAlert(msg: "Erro: \(err.localizedDescription)", vc: self) { _ in}
-//                    }
-//                }
+            if let msg = data.first as? [String:Any] {
+
+                do {
+                    let msgData = try JSONSerialization.data(withJSONObject: msg, options: [.withoutEscapingSlashes, .prettyPrinted])
+                
+                    let getMessage = try JSONDecoder().decode(DataGellAllMessages.self, from: msgData )
+                    
+                    self.setMessageData(msgData: getMessage)
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
+                    
+                } catch let err {
+                    AppHelper.printf(statement: "messageReceived Event Error: \(err.localizedDescription)")
+                }
+                
             }
         }
         
     }
     
     func setReciverInfo(data: Participant) -> ChatCellViewData{
-        var chat = ChatCellViewData(
+        let chat = ChatCellViewData(
             profileImg: "",
-            title: data.fullName ?? "N/A",
+            title: data.username ?? "N/A",
             subTitle: "",
             lastMsgTime: "",
             isOnline: false,
@@ -279,22 +252,39 @@ class ChatUIVC: MessagesViewController{
                 sentDate: Date(),
                 kind: .text("\(msgContent)")))
             
-        }else{   // Attachment msg for text
-            
-//            self.messages.append(Message(
-//                sender: senderType,
-//                messageId: msgData.id ?? UUID().uuidString,
-//                sentDate: Date(),
-//                kind: .text("ATTACHMENT..")))
-            
-            if let arrAttachments = msgData.attachments, !arrAttachments.isEmpty{
-                for itemAttachted in arrAttachments{
+        }
+        
+        // Attachment msg for text
+        if let arrAttachments = msgData.attachments, !arrAttachments.isEmpty{
+            for itemAttachted in arrAttachments{
+                
+                if itemAttachted.url!.contains(".pdf"){
+                    
                     self.messages.append(Message(
                         sender: senderType,
                         messageId: msgData.id ?? UUID().uuidString,
                         sentDate: Date(),
-                        kind: .photo(ImageMediaItem(imageURL: URL(string:"\(itemAttachted.url ?? "" )")! ) ) ))
+                        kind: .linkPreview(
+                            MediaLinkItem(
+                                text: "",
+                                attributedText: nil,
+                                url: URL(string: itemAttachted.url!)!,
+                                title: itemAttachted.id ?? "N/A",
+                                teaser: "",
+                                thumbnailImage: UIImage(named: "icon_file_placeholder")!
+                            )
+                        )
+                    ))
+                    
+                }else if ( itemAttachted.url!.contains(".jpg") || itemAttachted.url!.contains(".png") ){
+                    
+                    self.messages.append(Message(
+                        sender: senderType,
+                        messageId: msgData.id ?? UUID().uuidString,
+                        sentDate: Date(),
+                        kind: .photo(MediaImageItem(imageURL: URL(string:"\(itemAttachted.url ?? "" )")! ) ) ))
                 }
+                
             }
         }
                 
@@ -302,6 +292,16 @@ class ChatUIVC: MessagesViewController{
     
     
 
+}
+
+
+
+// MARK: - MessageCellDelegate
+extension ChatUIVC: MessageCellDelegate{
+    
+    func didSelectURL(_ url: URL) {
+        UIApplication.shared.open(url)
+    }
 }
 
 
@@ -333,12 +333,19 @@ extension ChatUIVC: MessagesDataSource{
 //    }
     
     
-//    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-//        return NSAttributedString(
-//            string: "@\(reciverInfo.username)",
-//            attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
-//    }
-//
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        return NSAttributedString(
+            string: (message.sender.displayName == UserInfo.userName) ? "@You" : "@\(message.sender.displayName)",
+            attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .caption1)])
+    }
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 20.0
+    }
+    
+
+
    
 }
 
@@ -365,6 +372,10 @@ extension ChatUIVC: MessagesLayoutDelegate{
     }
     
 
+    func footerViewSize(for section: Int, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        
+        return CGSize(width: messagesCollectionView.bounds.width, height: 4)
+    }
     
 }
 
@@ -447,26 +458,71 @@ extension ChatUIVC: InputBarAccessoryViewDelegate{
         
     }
     
+    
+    
 }
 
+
+
+// MARK: - iMessageButtonActionDelegate
+extension ChatUIVC: iMessageButtonActionDelegate, UIDocumentPickerDelegate{
+    func onClickAttachment() {
+        
+        let documentTypes = [UTType.image, UTType.pdf, UTType.text]
+        let documentPickerVC = UIDocumentPickerViewController(forOpeningContentTypes: documentTypes)
+        documentPickerVC.modalPresentationStyle = .formSheet
+        documentPickerVC.delegate = self
+        present(documentPickerVC, animated: true)
+    }
+    
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        if let fileUri = urls.first, fileUri.startAccessingSecurityScopedResource(){
+            do {
+                if #available(iOS 16.0, *) {
+                    let fileData = try Data(contentsOf: fileUri)
+                    AppHelper.printf(statement: "\(fileUri.absoluteString)")
+                    AppHelper.showProgressHUD(vc: self)
+                    apiChatSendMessages(roomID: UserInfo.roomID, attachments: fileData)
+                } else {
+                    // Fallback on earlier versions
+                }
+            } catch let err {
+                AppHelper.printf(statement: "Docment selecting data error: \(err.localizedDescription)")
+                AppHelper.getErrorAlert(msg: err.localizedDescription, vc: self) { _ in}
+            }
+        }
+        
+        
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        
+    }
+    
+    
+}
 
 
 //MARK: - Api Service
 extension ChatUIVC{
     
-    func apiChatSendMessages(roomID:String, contentData: String? = nil, attachments:String? = nil ){
+    func apiChatSendMessages(roomID:String, contentData: String? = nil, attachments:Data? = nil ){
         let reqData = ModelSendMessageREQ(content: contentData, attachments: attachments)
         
         chatViewModel.chatSendMessages(reqUrl: .sendMessage, reqBody: reqData, roomID: roomID, reqHttpMethod: .POST) { response in
             
+            AppHelper.hideProgessHUD(vc: self)
             switch response{
             case .success(let resObj) :
                 
                 DispatchQueue.main.async {
                     self.setMessageData(msgData: resObj.data)
                     self.messageInputBar.inputTextView.text = ""
-                    self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
                     self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem(at: .bottom, animated: true)
+                    
                     
                 }
 
@@ -499,48 +555,9 @@ extension ChatUIVC{
 
                 DispatchQueue.main.async {
                 
-//                    let arrMsg = resObj.data
-//                    arrMsg.reversed()
-                    
                     for item in resObj.data.reversed(){
-                        
                         self.setMessageData(msgData: item)
-                        
-//                        if item.sender?.username == UserInfo.userName{
-//                            if let msgContent = item.content, msgContent != "" {
-//                                self.messages.append(Message(
-//                                    sender: self.currentUser,
-//                                    messageId: item.id ?? UUID().uuidString,
-//                                    sentDate: Date(),
-//                                    kind: .text("\(msgContent)")))
-//                            }else{
-//                                self.messages.append(Message(
-//                                    sender: self.currentUser,
-//                                    messageId: item.id ?? UUID().uuidString,
-//                                    sentDate: Date(),
-//                                    kind: .text("ATTACHMENT..")))
-//                            }
-//
-//                        }else{
-//
-//                            if let msgContent = item.content, msgContent != "" {
-//                                self.messages.append(Message(
-//                                    sender: self.otherUser,
-//                                    messageId: item.id ?? UUID().uuidString,
-//                                    sentDate: Date(),
-//                                    kind: .text("\(msgContent)")))
-//                            }else{
-//                                self.messages.append(Message(
-//                                    sender: Sender(senderId: "other", displayName: "\(item.sender?.username ?? "N/A")"),
-//                                    messageId: item.id ?? UUID().uuidString,
-//                                    sentDate: Date(),
-//                                    kind: .text("ATTACHMENT..")))
-//                            }
-//
-//
-//                        }
                     }
-                    
 //                    self.addDummyMessages()
 //                    self.messageInputBar.inputTextView.becomeFirstResponder()
                     self.messagesCollectionView.reloadData()

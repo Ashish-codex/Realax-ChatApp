@@ -96,7 +96,7 @@ class ChatHomeVC: UIViewController, LZViewPagerDelegate, LZViewPagerDataSource, 
             return
         }
         
-        composeSearchVC.nv = self.navigationController
+        composeSearchVC.parentSelf = self.navigationController
         
         let navController = UINavigationController(rootViewController: composeSearchVC)
         present(navController, animated: true)

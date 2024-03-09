@@ -41,18 +41,33 @@ public struct MultipartRequest {
         data.append(value + separator)
     }
 
+    
 //    public mutating func add(
 //        key: String,
-//        fileName: String,
-//        fileMimeType: String,
 //        fileData: Data
 //    ) {
 //        appendBoundarySeparator()
-//        data.append(disposition(key) + "; filename=\"\(fileName)\"" + separator)
-//        data.append("Content-Type: \(fileMimeType)" + separator + separator)
-//        data.append(fileData)
+//        data.append(disposition(key) + separator)
 //        appendSeparator()
+////        data.append("Content-Type: \(fileMimeType)" + separator + separator)
+//        data.append(fileData)
+////        appendSeparator()
 //    }
+    
+    
+    
+    public mutating func add(
+        key: String,
+        fileName: String = "test",
+        fileMimeType: String = ".txt",
+        fileData: Data
+    ) {
+        appendBoundarySeparator()
+        data.append(disposition(key) + "; filename=\"\(fileName)\"" + separator)
+        data.append("Content-Type: \(fileMimeType)" + separator + separator)
+        data.append(fileData)
+        appendSeparator()
+    }
 
     public var httpContentTypeHeadeValue: String {
         "multipart/form-data; boundary=\(boundary)"

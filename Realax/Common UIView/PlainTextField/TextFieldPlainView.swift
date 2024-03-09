@@ -41,7 +41,7 @@ class TextFieldPlainView: UIView {
             addSubview(nibView!)
         }
         
-        
+        txtField.delegate = self
         containerVeiw.customRoundedView(radius: 10)
     }
        
@@ -62,5 +62,15 @@ class TextFieldPlainView: UIView {
 
     public func setText(text:String){
         txtField.text = text
+    }
+}
+
+
+
+extension TextFieldPlainView : UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

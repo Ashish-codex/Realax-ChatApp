@@ -141,10 +141,16 @@ extension ChatListVC{
                     self.arrChatData.removeAll()
                     for item in resObj.data{
                         self.arrChatData.append(item)
-                        if let participants = item.participants{
-                            for participant in participants {
-                                if participant.username != UserInfo.userName{
-                                    self.arrChatParticipant.append(participant)
+                        
+                        if let isGrp = item.isGroupChat, isGrp{
+                            self.arrChatParticipant.append(
+                                Participant(id: "", username: "\(item.name ?? "")", email: "", role: "", fullName: "", avatar: nil, createdAt: "", updatedAt: "", v: 0))
+                        }else{
+                            if let participants = item.participants{
+                                for participant in participants {
+                                    if participant.username != UserInfo.userName{
+                                        self.arrChatParticipant.append(participant)
+                                    }
                                 }
                             }
                         }

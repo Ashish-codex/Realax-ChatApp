@@ -32,7 +32,7 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_img" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-Bj-R7Y">
                                     <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-zI-m3B">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5j-zI-m3B">
                                     <rect key="frame" x="42" y="43" width="10" height="10"/>
                                     <color key="backgroundColor" red="0.37254901959999998" green="0.79215686269999996" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>

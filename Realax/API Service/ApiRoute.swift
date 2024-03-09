@@ -24,10 +24,10 @@ enum ApiRoute: String {
     case searchVariableUser = "api/v1/chat-app/chats/users"
     case getGroupChatDetail = "api/v1/chat-app/chats/group/:chatId"
     case leaveGroupChat = "api/v1/chat-app/leave/group/:chatId"
-    case createGroupChat = "api/v1/chat-app/group"
+    case createGroupChat = "api/v1/chat-app/chats/group"
     case createOneToOneChat = "api/v1/chat-app/chats/c/"  //{/:roomID}
     
-    case sendMessage = "api/v1/chat-app/messages/"        //{/:roomID}
+    case sendMessage = "api/v1/chat-app/messages/"        //{/:roomID} send and recive for both
 //    case reciveMessage = "api/v1/chat-app/messages/"
     
 }

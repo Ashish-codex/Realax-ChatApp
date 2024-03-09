@@ -183,6 +183,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoPluginAdapter/ZegoPluginAdapter.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKit/ZegoUIKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKitPrebuiltCall/ZegoUIKitPrebuiltCall.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKitSignalingPlugin/ZegoUIKitSignalingPlugin.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZIM/ZIM.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZPNs/ZPNs.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZegoExpressEngine/ZegoExpressEngine.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework"
@@ -192,6 +199,13 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoPluginAdapter/ZegoPluginAdapter.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKit/ZegoUIKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKitPrebuiltCall/ZegoUIKitPrebuiltCall.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZegoUIKitSignalingPlugin/ZegoUIKitSignalingPlugin.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZIM/ZIM.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZPNs/ZPNs.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZegoExpressEngine/ZegoExpressEngine.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

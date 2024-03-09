@@ -24,6 +24,7 @@
 		753C46D62B669335001C53F8 /* ModelLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753C46D52B669334001C53F8 /* ModelLogin.swift */; };
 		753CE4F72B3AF7CF00D735F0 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */; };
 		753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */; };
+		75439B882B8CBC7A0047D290 /* sample_file.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 75439B872B8CBC7A0047D290 /* sample_file.pdf */; };
 		754CAD772B6BA11200A0306C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754CAD762B6BA11200A0306C /* UserInfo.swift */; };
 		7561AD8A2B413B9A0068C362 /* CallCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7561AD892B413B9A0068C362 /* CallCellView.xib */; };
 		7561AD8C2B413BA90068C362 /* CallCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7561AD8B2B413BA90068C362 /* CallCellView.swift */; };
@@ -33,6 +34,8 @@
 		758D0A5E2B6FB3D200E6FA48 /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758D0A5D2B6FB3D200E6FA48 /* SocketHelper.swift */; };
 		75965B752B3BE5940096D238 /* ChatHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75965B742B3BE5940096D238 /* ChatHomeVC.swift */; };
 		759BAA112B3F1F8600E40FF6 /* ChatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */; };
+		75A3DD632B8DFB0400290AA1 /* CreateNewGroupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3DD622B8DFB0400290AA1 /* CreateNewGroupVC.swift */; };
+		75A3DD652B8E031B00290AA1 /* ModelCreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A3DD642B8E031B00290AA1 /* ModelCreateGroup.swift */; };
 		75A815EB2B6A272200AC534E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A815EA2B6A272200AC534E /* SplashViewController.swift */; };
 		75AFCE002B89F54E00FFECD9 /* MultipartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFCDFF2B89F54E00FFECD9 /* MultipartRequest.swift */; };
 		75AFCE022B8A020400FFECD9 /* ModelMediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AFCE012B8A020400FFECD9 /* ModelMediaType.swift */; };
@@ -92,6 +95,7 @@
 		753C46D52B669334001C53F8 /* ModelLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLogin.swift; sourceTree = "<group>"; };
 		753CE4F62B3AF7CF00D735F0 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		753CE4FC2B3B3D5C00D735F0 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		75439B872B8CBC7A0047D290 /* sample_file.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample_file.pdf; sourceTree = "<group>"; };
 		754CAD762B6BA11200A0306C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		7561AD892B413B9A0068C362 /* CallCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallCellView.xib; sourceTree = "<group>"; };
 		7561AD8B2B413BA90068C362 /* CallCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCellView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 		758D0A5D2B6FB3D200E6FA48 /* SocketHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		75965B742B3BE5940096D238 /* ChatHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeVC.swift; sourceTree = "<group>"; };
 		759BAA102B3F1F8600E40FF6 /* ChatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListVC.swift; sourceTree = "<group>"; };
+		75A3DD622B8DFB0400290AA1 /* CreateNewGroupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupVC.swift; sourceTree = "<group>"; };
+		75A3DD642B8E031B00290AA1 /* ModelCreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCreateGroup.swift; sourceTree = "<group>"; };
 		75A815EA2B6A272200AC534E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		75AFCDFF2B89F54E00FFECD9 /* MultipartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartRequest.swift; sourceTree = "<group>"; };
 		75AFCE012B8A020400FFECD9 /* ModelMediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelMediaType.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 				7561AD8D2B4148D80068C362 /* CallListVC.swift */,
 				7561AD8F2B414FB60068C362 /* SettingVC.swift */,
 				75D3CF882B6CF74C0074193C /* ComposeSearchUserVC.swift */,
+				75A3DD622B8DFB0400290AA1 /* CreateNewGroupVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 				75D3CF8A2B6E6F7C0074193C /* ModelGetAllChated.swift */,
 				75D3CF8C2B6E95400074193C /* ModelGetAllNewChat.swift */,
 				75EF5B372B80BB43007F91FE /* ModelOneToOneChat.swift */,
+				75A3DD642B8E031B00290AA1 /* ModelCreateGroup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,6 +330,7 @@
 		75D003602B398AB5000C1708 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				75439B872B8CBC7A0047D290 /* sample_file.pdf */,
 				7512A0182B2DAF61008B9328 /* AppDelegate.swift */,
 				7512A01A2B2DAF61008B9328 /* SceneDelegate.swift */,
 				7561AD922B416A370068C362 /* AppHelpler.swift */,
@@ -473,6 +482,7 @@
 				7561AD8A2B413B9A0068C362 /* CallCellView.xib in Resources */,
 				7512A0252B2DAF69008B9328 /* LaunchScreen.storyboard in Resources */,
 				753CE4F72B3AF7CF00D735F0 /* Dashboard.storyboard in Resources */,
+				75439B882B8CBC7A0047D290 /* sample_file.pdf in Resources */,
 				75D054CE2B4A642000D26963 /* ChatUI.storyboard in Resources */,
 				750E464F2B4046260029FE37 /* ChatCellView.xib in Resources */,
 				7512A0222B2DAF69008B9328 /* Assets.xcassets in Resources */,
@@ -540,6 +550,7 @@
 				75EF5B402B80E7EA007F91FE /* ModelSendMessage.swift in Sources */,
 				75A815EB2B6A272200AC534E /* SplashViewController.swift in Sources */,
 				753C46D42B668754001C53F8 /* OnboardingViewModel.swift in Sources */,
+				75A3DD652B8E031B00290AA1 /* ModelCreateGroup.swift in Sources */,
 				75D054D22B4A68E000D26963 /* ChatUIVC.swift in Sources */,
 				75D003412B3944BD000C1708 /* SignUpBottomVC.swift in Sources */,
 				7561AD902B414FB60068C362 /* SettingVC.swift in Sources */,
@@ -571,6 +582,7 @@
 				75D3CF892B6CF74D0074193C /* ComposeSearchUserVC.swift in Sources */,
 				75D0036C2B39906B000C1708 /* SelectGenderVC.swift in Sources */,
 				7561AD932B416A370068C362 /* AppHelpler.swift in Sources */,
+				75A3DD632B8DFB0400290AA1 /* CreateNewGroupVC.swift in Sources */,
 				75AFCE022B8A020400FFECD9 /* ModelMediaType.swift in Sources */,
 				753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */,
 				754CAD772B6BA11200A0306C /* UserInfo.swift in Sources */,
