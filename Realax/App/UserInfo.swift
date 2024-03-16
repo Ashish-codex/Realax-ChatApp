@@ -89,6 +89,20 @@ struct UserInfo{
         }
     }
     
+    
+    static var userID: String{
+        set{
+            UserDefaults.standard.set(newValue, forKey: "userID")
+        }
+        
+        get{
+            let accessToken = UserDefaults.standard.value(forKey: "userID") as? String
+            return accessToken ?? ""
+        }
+    }
+    
+    
+    
     static var email: String{
         set{
             UserDefaults.standard.set(newValue, forKey: "email")
@@ -104,4 +118,8 @@ struct UserInfo{
     static var roomID:String = ""
     
     
+    static var chatProfileData: ChatData!
+    
 }
+
+

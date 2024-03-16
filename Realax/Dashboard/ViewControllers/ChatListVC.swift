@@ -108,12 +108,17 @@ extension ChatListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let chatData = arrChatData[indexPath.row]
+        UserInfo.chatProfileData = ChatData(id: chatData.id, name: chatData.name, isGroupChat: chatData.isGroupChat, participants: chatData.participants, admin: chatData.admin, createdAt: chatData.createdAt, updatedAt: chatData.updatedAt, v: chatData.v)
+        
+        
         guard let chatUiVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatUIVC") as? ChatUIVC else {
             AppHelper.printf(statement:"Unable to load SettingVC")
             return
         }
         navigationController?.pushViewController(chatUiVC, animated: true)
         chatUiVC.atIndex = indexPath.row
+//        chatUiVC.chatDataInfo = arrChatData[indexPath.row]
         chatUiVC.reciverInfo = arrChatParticipant[indexPath.row]
         UserInfo.roomID = arrChatData[indexPath.row].id ?? ""
     }
@@ -128,11 +133,11 @@ extension ChatListVC{
     
     func apiGetAllChatedList(){
         
-//        AppHelper.showProgressHUD(vc: self)
+        AppHelper.showProgressHUD(vc: self)
         
         dashboardViewModel.apiGetAllChated(reqUrl: .getAllChats, reqHttpMethod: .GET) { response in
             
-//            AppHelper.hideProgessHUD(vc: self)
+            AppHelper.hideProgessHUD(vc: self)
             switch response{
             case .success(let resObj) :
                 DispatchQueue.main.async {

@@ -37,6 +37,7 @@ class ChatUIVC: MessagesViewController{
     var atIndex:Int = 0
     var msgContentCell = MessageContentCell()
     var reciverInfo: Participant!
+//    var chatDataInfo: ChatData!
     var chatHeaderData:ChatCellViewData!
     private var chatViewModel = ChatViewModel()
     private var iMessageInputBar: iMessageInputBarAccessoryView!
@@ -46,6 +47,7 @@ class ChatUIVC: MessagesViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        apiChatReciveMessages(roomID: UserInfo.roomID)
     }
     
     
@@ -54,8 +56,13 @@ class ChatUIVC: MessagesViewController{
         apiChatReciveMessages(roomID: UserInfo.roomID)
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationBarUI()
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
-        AppHelper.removeStatusBarColor()
+//        AppHelper.removeStatusBarColor()
         chatNavBarView.removeFromSuperview()
     }
     
@@ -66,7 +73,7 @@ class ChatUIVC: MessagesViewController{
     
 // MARK: - Functions
     func setupUI(){
-        setNavigationBarUI()
+//        setNavigationBarUI()
         setMessageKitUI()
 //        addDummyMessages()
         joinChat()
@@ -87,6 +94,7 @@ class ChatUIVC: MessagesViewController{
         
         chatHeaderData = setReciverInfo(data: reciverInfo)
         chatNavBarView.setData(cellData: chatHeaderData)
+        chatNavBarView.delegate = self
         
         navigationController?.navigationBar.addSubview(chatNavBarView)
         chatNavBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -292,6 +300,36 @@ class ChatUIVC: MessagesViewController{
     
     
 
+}
+
+
+
+// MARK: - ChatNavBarDelegate
+extension ChatUIVC: ChatNavBarDelegate{
+    func onClickProfile() {
+        
+//        if let isGrp = chatDataInfo.isGroupChat, isGrp{
+            guard let chatProfileVC = UIStoryboard(name: "ChatUI", bundle: nil).instantiateViewController(withIdentifier: "ID_ChatProfileVC") as? ChatProfileVC else {
+                AppHelper.printf(statement:"Unable to load ChatProfileVC")
+                return
+            }
+            navigationController?.pushViewController(chatProfileVC, animated: true)
+            
+//            chatProfileVC.chatDataInfo = chatDataInfo
+            chatProfileVC.reciverInfo = reciverInfo
+//        }
+        
+    }
+    
+    func onClickVideoCall() {
+        
+    }
+    
+    func onClickVoiceCall() {
+        
+    }
+    
+    
 }
 
 
@@ -511,7 +549,7 @@ extension ChatUIVC{
     func apiChatSendMessages(roomID:String, contentData: String? = nil, attachments:Data? = nil ){
         let reqData = ModelSendMessageREQ(content: contentData, attachments: attachments)
         
-        chatViewModel.chatSendMessages(reqUrl: .sendMessage, reqBody: reqData, roomID: roomID, reqHttpMethod: .POST) { response in
+        chatViewModel.chatSendMessages(reqUrl: .messages, reqBody: reqData, roomID: roomID, reqHttpMethod: .POST) { response in
             
             AppHelper.hideProgessHUD(vc: self)
             switch response{
@@ -547,7 +585,7 @@ extension ChatUIVC{
         
         AppHelper.showProgressHUD(vc: self)
         
-        chatViewModel.chatReciveMessages(reqUrl: .sendMessage, roomID: roomID, reqHttpMethod: .GET) { response in
+        chatViewModel.chatReciveMessages(reqUrl: .messages, roomID: roomID, reqHttpMethod: .GET) { response in
          
             AppHelper.hideProgessHUD(vc: self)
             switch response{
@@ -555,6 +593,7 @@ extension ChatUIVC{
 
                 DispatchQueue.main.async {
                 
+                    self.messages.removeAll()
                     for item in resObj.data.reversed(){
                         self.setMessageData(msgData: item)
                     }

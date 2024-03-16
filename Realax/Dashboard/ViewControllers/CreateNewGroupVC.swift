@@ -39,6 +39,13 @@ class CreateNewGroupVC: UIViewController {
     
     private var dashboardViewModel = DashboardViewModel()
     
+    private let searchBarUser:UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search for users..."
+        searchBar.searchBarStyle = .prominent
+        return searchBar
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +59,11 @@ class CreateNewGroupVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        searchBarUser.delegate = self
+        
+        navigationController?.navigationBar.topItem?.titleView = searchBarUser
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(onClickCancel))
+    
         
         viewDone.customRoundedView(radius: viewDone.frame.width / 2)
         viewDone.dropShadow(color: .black, opacity: 0.2, offSet: CGSize(width: -6, height: 6), radius: 6, scale: true)
@@ -79,7 +91,36 @@ class CreateNewGroupVC: UIViewController {
     }
     
     
+    
+    
+    @objc func onClickCancel(){
+        dismiss(animated: true)
+    }
+    
+    
 
+}
+
+
+
+extension CreateNewGroupVC: UISearchBarDelegate{
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+//        if searchText.isEmpty{
+//           isSearching = false
+//        }else{
+//            isSearching = true
+//            arrSearchingNewChatParticipant = arrNewChatParticipant.filter({ chatData in
+//                let isFound = searchText.lowercased() == chatData.username?.prefix(searchText.count) ?? ""
+//                return isFound
+//            })
+//        }
+        
+        
+        
+//        tableView.reloadData()
+    }
 }
 
 
@@ -181,7 +222,7 @@ extension CreateNewGroupVC{
         
         let grpData = ModelCreateGroupREQ(name: viewGrpName.getText(), participants: arrSelectedParticipant)
         
-        dashboardViewModel.apiCreateGroupChat(reqUrl: .createGroupChat, reqBody: grpData, reqHttpMethod: .POST) { response in
+        dashboardViewModel.apiCreateGroupChat(reqUrl: .chatsGroupURL, reqBody: grpData, reqHttpMethod: .POST) { response in
             
             AppHelper.hideProgessHUD(vc: self)
             switch response{

@@ -25,11 +25,13 @@ struct ModelCreateGroupRES: Codable {
 
 
 struct DataGroupChat: Codable {
-    let id, name: String
-    let isGroupChat: Bool
-    let participants: [Participant]
-    let admin, createdAt, updatedAt: String
-    let v: Int
+    let id, name: String?
+    let isGroupChat: Bool?
+    let participants: [Participant]?
+    let admin, createdAt, updatedAt: String?
+    let v: Int?
+    
+    
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

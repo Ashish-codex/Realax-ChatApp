@@ -8,6 +8,14 @@
 import Foundation
 import UIKit
 
+
+protocol ChatNavBarDelegate{
+    func onClickProfile()
+    func onClickVideoCall()
+    func onClickVoiceCall()
+}
+
+
 class ChatNavBar: UIView{
     
 
@@ -18,6 +26,7 @@ class ChatNavBar: UIView{
     @IBOutlet weak var iconVideoCall: UIImageView!
     @IBOutlet weak var iconCall: UIImageView!
     
+    var delegate: ChatNavBarDelegate?
     
     
     
@@ -51,11 +60,19 @@ class ChatNavBar: UIView{
     
     
     @IBAction func actBtnVideoCall(_ sender: Any) {
+        delegate?.onClickVideoCall()
     }
     
     
     
     @IBAction func actBtnNormalCall(_ sender: Any) {
+        delegate?.onClickVoiceCall()
+    }
+    
+    
+    
+    @IBAction func actBtnProfile(_ sender: Any) {
+        delegate?.onClickProfile()
     }
     
     

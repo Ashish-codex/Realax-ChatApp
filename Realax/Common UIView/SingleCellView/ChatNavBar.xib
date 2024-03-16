@@ -63,14 +63,25 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-BL-T3U">
+                                    <rect key="frame" x="0.0" y="0.0" width="202" height="40"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <connections>
+                                        <action selector="actBtnProfile:" destination="-1" eventType="touchUpInside" id="3Se-53-8mO"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dQV-BL-T3U" secondAttribute="trailing" id="0il-9S-Kdt"/>
                                 <constraint firstItem="OcC-oF-GNe" firstAttribute="leading" secondItem="3f8-j2-jTo" secondAttribute="leading" id="Gsq-zv-hLR"/>
                                 <constraint firstItem="OcC-oF-GNe" firstAttribute="top" secondItem="3f8-j2-jTo" secondAttribute="top" constant="2" id="QST-NM-O2z"/>
                                 <constraint firstAttribute="trailing" secondItem="NFs-Wm-QMC" secondAttribute="trailing" id="WoB-iw-Uzi"/>
+                                <constraint firstAttribute="bottom" secondItem="dQV-BL-T3U" secondAttribute="bottom" id="XET-No-VLP"/>
                                 <constraint firstAttribute="trailing" secondItem="OcC-oF-GNe" secondAttribute="trailing" id="XTS-9j-ZFR"/>
                                 <constraint firstItem="NFs-Wm-QMC" firstAttribute="leading" secondItem="3f8-j2-jTo" secondAttribute="leading" id="aS4-6E-ZcA"/>
+                                <constraint firstItem="dQV-BL-T3U" firstAttribute="leading" secondItem="3f8-j2-jTo" secondAttribute="leading" id="eCu-30-EWo"/>
+                                <constraint firstItem="dQV-BL-T3U" firstAttribute="top" secondItem="3f8-j2-jTo" secondAttribute="top" id="gb9-jd-WR2"/>
                                 <constraint firstAttribute="bottom" secondItem="NFs-Wm-QMC" secondAttribute="bottom" constant="4" id="lcj-B1-niL"/>
                             </constraints>
                         </view>

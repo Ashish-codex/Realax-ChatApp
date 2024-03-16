@@ -80,4 +80,150 @@ class ChatViewModel{
         }
     }
     
+    
+    
+    
+    func apiAddGroupMember(reqUrl: ApiRoute, roomID: String, userID: String, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelCreateGroupRES, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+        let url = reqUrl.rawValue+"\(roomID)/\(userID)"
+        
+        _ = ApiService.shared.callAPI(reqURL: url, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getGroupChatResponse = try JSONDecoder().decode(ModelCreateGroupRES.self, from: data)
+
+                    if getGroupChatResponse.success{
+                        complition(.success(getGroupChatResponse))
+                    }else{
+                        complition(.failure(.message(getGroupChatResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+    
+    
+    
+    func apiRemoveGroupMember(reqUrl: ApiRoute, roomID: String, userID: String, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelCreateGroupRES, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+        let url = reqUrl.rawValue+"\(roomID)\(userID)"
+        
+        _ = ApiService.shared.callAPI(reqURL: reqUrl.rawValue, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getGroupChatResponse = try JSONDecoder().decode(ModelCreateGroupRES.self, from: data)
+
+                    if getGroupChatResponse.success{
+                        complition(.success(getGroupChatResponse))
+                    }else{
+                        complition(.failure(.message(getGroupChatResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+    
+    
+    func apiExitGroup(reqUrl: ApiRoute, roomID: String, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelCreateGroupRES, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+        let url = reqUrl.rawValue+"\(roomID)"
+        
+        _ = ApiService.shared.callAPI(reqURL: url, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getGroupChatResponse = try JSONDecoder().decode(ModelCreateGroupRES.self, from: data)
+
+                    if getGroupChatResponse.success{
+                        complition(.success(getGroupChatResponse))
+                    }else{
+                        complition(.failure(.message(getGroupChatResponse.message)))
+                    }
+
+
+
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+    
+    
+    func apiDeleteGroup(reqUrl: ApiRoute, roomID: String, reqHttpMethod: ApiHttpMethod, complition: @escaping (Result<ModelCreateGroupRES, DataError>)->Void){
+
+        let reqBody = EmptyCodableForGetReq()
+        let url = reqUrl.rawValue+"\(roomID)"
+        
+        _ = ApiService.shared.callAPI(reqURL: url, reqObj: reqBody, reqHttpMethod: reqHttpMethod) { response in
+
+            switch response{
+            case .success(let data) :
+
+                do {
+                    let getGroupChatResponse = try JSONDecoder().decode(ModelCreateGroupRES.self, from: data)
+
+                    if getGroupChatResponse.success{
+                        complition(.success(getGroupChatResponse))
+                    }else{
+                        complition(.failure(.message(getGroupChatResponse.message)))
+                    }
+
+                    
+                } catch let error {
+                    complition(.failure(.error(error)))
+                    return
+                }
+
+
+                break
+            case .failure(let err) :
+                complition(.failure(err))
+                break
+            }
+        }
+    }
+    
 }

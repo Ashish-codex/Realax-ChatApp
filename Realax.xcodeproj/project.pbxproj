@@ -63,6 +63,7 @@
 		75D3CF892B6CF74D0074193C /* ComposeSearchUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CF882B6CF74C0074193C /* ComposeSearchUserVC.swift */; };
 		75D3CF8B2B6E6F7D0074193C /* ModelGetAllChated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CF8A2B6E6F7C0074193C /* ModelGetAllChated.swift */; };
 		75D3CF8D2B6E95400074193C /* ModelGetAllNewChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D3CF8C2B6E95400074193C /* ModelGetAllNewChat.swift */; };
+		75DFD00F2B9DE9BF0041C033 /* ChatProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFD00D2B9DE76A0041C033 /* ChatProfileVC.swift */; };
 		75EF5B382B80BB43007F91FE /* ModelOneToOneChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EF5B372B80BB43007F91FE /* ModelOneToOneChat.swift */; };
 		75EF5B3B2B80DF66007F91FE /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EF5B3A2B80DF66007F91FE /* ChatViewModel.swift */; };
 		75EF5B3E2B80E043007F91FE /* ModelGetAllMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EF5B3D2B80E043007F91FE /* ModelGetAllMessages.swift */; };
@@ -134,6 +135,7 @@
 		75D3CF882B6CF74C0074193C /* ComposeSearchUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeSearchUserVC.swift; sourceTree = "<group>"; };
 		75D3CF8A2B6E6F7C0074193C /* ModelGetAllChated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGetAllChated.swift; sourceTree = "<group>"; };
 		75D3CF8C2B6E95400074193C /* ModelGetAllNewChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGetAllNewChat.swift; sourceTree = "<group>"; };
+		75DFD00D2B9DE76A0041C033 /* ChatProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatProfileVC.swift; sourceTree = "<group>"; };
 		75EF5B372B80BB43007F91FE /* ModelOneToOneChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOneToOneChat.swift; sourceTree = "<group>"; };
 		75EF5B3A2B80DF66007F91FE /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		75EF5B3D2B80E043007F91FE /* ModelGetAllMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelGetAllMessages.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				75D054D12B4A68E000D26963 /* ChatUIVC.swift */,
+				75DFD00D2B9DE76A0041C033 /* ChatProfileVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				75D3CF892B6CF74D0074193C /* ComposeSearchUserVC.swift in Sources */,
 				75D0036C2B39906B000C1708 /* SelectGenderVC.swift in Sources */,
 				7561AD932B416A370068C362 /* AppHelpler.swift in Sources */,
+				75DFD00F2B9DE9BF0041C033 /* ChatProfileVC.swift in Sources */,
 				75A3DD632B8DFB0400290AA1 /* CreateNewGroupVC.swift in Sources */,
 				75AFCE022B8A020400FFECD9 /* ModelMediaType.swift in Sources */,
 				753CE4FD2B3B3D5C00D735F0 /* DashboardVC.swift in Sources */,

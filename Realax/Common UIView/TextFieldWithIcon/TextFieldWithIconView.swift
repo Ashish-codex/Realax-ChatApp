@@ -50,7 +50,7 @@ class TextFieldWithIconView: UIView {
             addSubview(nibView!)
         }
         
-        
+        txtField.delegate = self
         containerView.customRoundedView(radius: 10)
     }
        
@@ -91,4 +91,14 @@ class TextFieldWithIconView: UIView {
         txtField.text = text
     }
     
+}
+
+
+
+extension TextFieldWithIconView : UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

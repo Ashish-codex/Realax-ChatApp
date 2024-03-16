@@ -92,6 +92,7 @@ extension OnboardingViewModel{
         UserInfo.role = userData?.role ?? ""
         UserInfo.fullName = userData?.fullName ?? ""
         UserInfo.userName = userData?.username ?? ""
+        UserInfo.userID = userData?.id ?? ""
         UserInfo.email = userData?.email ?? ""
         UserInfo.isLoggedIn = true
     }

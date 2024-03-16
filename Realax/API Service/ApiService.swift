@@ -63,7 +63,7 @@ class ApiService{
         var multipart = MultipartRequest()
         request.httpMethod = reqHttpMethod.rawValue
         
-        if (reqURL.contains(ApiRoute.sendMessage.rawValue)){
+        if (reqURL.contains(ApiRoute.messages.rawValue)){
             
             if let sendMessageReq = reqObj as? ModelSendMessageREQ{
                 

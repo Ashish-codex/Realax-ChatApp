@@ -48,7 +48,7 @@ class SettingVC: UIViewController {
         viewHeader.layer.cornerRadius = 15
         viewHeader.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         viewContainerProfile.dropShadow(color: .black, opacity: 0.1, offSet: CGSize(width: -1, height: 1), radius: 8, scale: true)
-        viewProfileImage.customRoundedView(radius: imgProfileImage.frame.height / 2, borderColor: UIColor.primaryThemeColor.cgColor, borderWidth: 2)
+        viewProfileImage.customRoundedView(radius: imgProfileImage.frame.height / 2)
         
         setUserDetail()
 

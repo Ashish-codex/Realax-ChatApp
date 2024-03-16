@@ -66,6 +66,21 @@ class AppHelper{
         }
     }
     
+
+    // MARK: - Show Alert
+    class func getAlert(msg:String, vc:UIViewController, complition: @escaping(_ actionTitle: String) -> Void){
+        
+        DispatchQueue.main.async {
+            let alertVC = UIAlertController(title: AppConstant.kAPP_NAME, message: msg, preferredStyle: .alert)
+            alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alertVC.addAction(UIAlertAction(title: "Okay", style: .default, handler: { action in
+                complition(action.title ?? "")
+            }))
+            
+            vc.present(alertVC, animated: true)
+        }
+    }
+    
     
 
     // MARK: - Printf
